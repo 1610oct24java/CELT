@@ -6,11 +6,31 @@ import javax.servlet.http.HttpServletResponse;
 public class RequestHelper {
 	
 	public String process(HttpServletRequest request, HttpServletResponse response){
+		String direct = "index.html";
+		int userID = 0;
+		
 		switch(request.getRequestURI()){
 		case "/RestaurantApp/login.do": 
-			//return ;
-			
+			userID = checkLogin(request.getParameter("username"), request.getParameter("password"));
+			if (userID > 0){
+				// valid user so save userID in the session
+				request.getSession().setAttribute("userID", userID);
+				direct = getUserTypeByUserID();
+			}
+			break;
 		}
-		return "index.html";
+		return direct;
+	}
+	
+	public int checkLogin(String username, String password){
+		if(username.equals("me")){
+			
+			return 1;
+		}
+		else if(username.equals("you")){
+			
+			return 2;
+		}
+		return 0;
 	}
 }

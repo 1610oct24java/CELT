@@ -14,13 +14,6 @@ public class Master extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String destination;
 
-    /**
-     * Default constructor. 
-     */
-    public Master() {
-        // TODO Auto-generated constructor stub
-    }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
