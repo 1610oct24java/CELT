@@ -9,4 +9,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Master</display-name>
+    <servlet-name>Master</servlet-name>
+    <servlet-class>com.revature.servlets.Master</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Master</servlet-name>
+    <url-pattern>/Master</url-pattern>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
 </web-app>

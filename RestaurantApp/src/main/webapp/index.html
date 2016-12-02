@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="awesome-app">
 <head>
+<base href="/RestaurantApp/">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Celt</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
 </head>
-<body>
-Hello Celts!
+<body ng-cloak>
+  <div ui-view></div>
+  <a ui-sref="createUser"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+<script src="./resources/js/app.module.js"></script>
+<script src="./resources/js/app.config.js"></script>
+<script src="./resources/js/app.run.js"></script>
+<script src="./resources/js/createUser/createUser.module.js"></script>
+<script src="./resources/js/createUser/createUser.controller.js"></script>
+<script src="./resources/js/createUser/createUser.service.js"></script>
+<script src="./resources/js/createUser/createUser.routes.js"></script>
+<script src="./resources/js/createUser/createUser.config.js"></script>
 </body>
 </html>

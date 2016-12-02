@@ -2,7 +2,9 @@ package com.revature.dao;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.revature.beans.Customer;
+
 public interface CustomerDAO {
 
-	public void createCustomer(HttpServletRequest Request);
+	public Customer createCustomer(HttpServletRequest request);
 }

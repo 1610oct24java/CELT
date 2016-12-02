@@ -48,6 +48,7 @@ public abstract class User implements Serializable {
 	public void setSalt(String salt){
 		this.salt = salt;
  	}
+	
 	private int salt(String pw){
 		SecureRandom sr = new SecureRandom();
 		if(this.salt == null){

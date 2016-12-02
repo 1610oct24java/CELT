@@ -14,6 +14,14 @@
 		<property name="hibernate.format_sql">true</property>
 		
 		<!-- We have to tell hibernate where our classes it maps are -->
-		
+		<mapping class="com.revature.beans.ContactInfo"/>
+		<mapping class="com.revature.beans.Customer"/>
+		<mapping class="com.revature.beans.FoodItem"/>
+		<mapping class="com.revature.beans.Invoice"/>
+		<mapping class="com.revature.beans.InvoiceItem"/>
+		<mapping class="com.revature.beans.Manager"/>
+		<mapping class="com.revature.beans.Restaurant"/>
+		<mapping class="com.revature.beans.Review"/>
+		<mapping class="com.revature.beans.User"/>
 	</session-factory>
 </hibernate-configuration>
