@@ -7,28 +7,34 @@ public class RequestHelper {
 	
 	public String process(HttpServletRequest request, HttpServletResponse response){
 		String direct = "index.html";
-		int userID = 0;
+		int accountID = 0;
 		
-		switch(request.getRequestURI()){
-		case "/RestaurantApp/login.do": 
-			userID = checkLogin(request.getParameter("username"), request.getParameter("password"));
-			if (userID > 0){
+		switch(request.getRequestURI()) {
+		case "/RestaurantApp/login.do":
+			accountID = checkLogin(request.getParameter("username"), request.getParameter("password"));
+			if (accountID > 0) {
 				// valid user so save userID in the session
-				request.getSession().setAttribute("userID", userID);
-				direct = getUserTypeByUserID();
+				request.getSession().setAttribute("userID", accountID);
+				if (accountID == 1) {
+					direct = "customer.html";
+				} else {
+					direct = "restaurant.html";
+				}
 			}
+			break;
+		case "/RestaurantApp/logout.do":
+			request.getSession().invalidate();
 			break;
 		}
 		return direct;
 	}
-	
-	public int checkLogin(String username, String password){
-		if(username.equals("me")){
-			
+
+	public int checkLogin(String username, String password) {
+		if (username.equals("me")) {
+
 			return 1;
-		}
-		else if(username.equals("you")){
-			
+		} else if (username.equals("you")) {
+
 			return 2;
 		}
 		return 0;
