@@ -1,7 +1,7 @@
 
 <div class="container">
-	<div id="login-div" class="row">
-		<div row="col-sm-6 col-sm-offset-3">
+	<div id="login-div" class="row col-xs-10 col-xs-offset-1">
+		<div row="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 			<form role="form" class="form-horizontal">
 				<div class="form-group">
 					<label for="firstName" class="control-label">First Name:</label> <span
@@ -29,7 +29,6 @@
 						type="password" class="form-control" name="password" id="password"
 						ng-model="$createUser.user.password" placeholder="Enter Password">
 				</div>
-
 				<button type="submit" class="btn btn-default"
 					ng-click="$createUser.create()">Sign Up</button>
 			</form>

@@ -25,6 +25,7 @@ public abstract class User implements Serializable {
 	@GeneratedValue(generator="ACCOUNT_SEQ",strategy=GenerationType.SEQUENCE)
 	@Column(name="A_ID")
 	private int userId;
+	
 	@Column(name="P_WORD")
 	private int password;
 	@Column(name="MY_SALT")
