@@ -4,7 +4,7 @@
     .constant('createUserRoutes', {
     	//from my understanding this is called from the ui-sref
       createUser: {
-        url: '/createuser',
+        url: '/pages/',
         templateUrl: 'createUser.template.html',
         controller: 'CreateUserController',
         controllerAs: '$createUser',

@@ -10,4 +10,9 @@ public class UserController {
 	public String getIndexPage(){
 		return "index";
 	}
+	
+	@RequestMapping(value="/home")
+	public String getHomePage(){
+		return "home";
+	}
 }
