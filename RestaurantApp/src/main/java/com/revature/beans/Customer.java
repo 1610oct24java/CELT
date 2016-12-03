@@ -38,11 +38,10 @@ public class Customer extends User {
 	}
 	public Customer() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public Customer(int userId, String password, String salt, String firstName, String lastName) {
 		super(userId, password, salt);
-		// TODO Auto-generated constructor stub
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}

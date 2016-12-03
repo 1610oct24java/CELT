@@ -86,7 +86,7 @@ public class ContactInfo implements Serializable {
 	}
 
 	public ContactInfo() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public ContactInfo(int id, String street, String city, String state, String zip, String phone, String email) {

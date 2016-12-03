@@ -79,7 +79,6 @@ public class FoodItem implements Serializable {
 	}
 	public FoodItem() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public FoodItem(int id, String name, String description, float price, Restaurant restaurant, boolean isSpecial,
 			boolean soldOut) {

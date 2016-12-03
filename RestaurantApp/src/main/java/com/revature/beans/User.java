@@ -80,7 +80,6 @@ public abstract class User implements Serializable {
 	}
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public User(int userId, String password, String salt) {
 		super();
