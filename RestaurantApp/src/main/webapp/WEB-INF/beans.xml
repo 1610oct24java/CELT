@@ -20,7 +20,7 @@
 			<value>/WEB-INF/pages/</value>
 		</property>
 		<property name="suffix">
-			<value>.html</value>
+			<value>*.html</value>
 		</property>
 	</bean>
 </beans>
