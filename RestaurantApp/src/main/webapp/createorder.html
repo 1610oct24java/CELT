@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="ISO-8859-1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+<title>Add items to cart</title>
+</head>
+<body ng-controller="testCtrl">
+	<h2>Not Raising Canes</h2>
+	<div>
+	<form ng-submit="processForm()">
+		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m1" />Chicken Tenders <span ng-bind="m1"></span></div>
+		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m2" />Fries <span ng-bind="m2"></span></div>
+		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m3" />Texas Toast <span ng-bind="m3"></span></div>
+		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m4" />Coleslaw <span ng-bind="m4"></span></div>
+		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m5" />Lemonade <span ng-bind="m5"></span></div>
+		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m6" />Tea <span ng-bind="m6"></span></div>
+		<input type="submit" name="submitOrder" value="Submit Order"/>
+		<!-- <input type="reset"/> -->
+	</form>
+	</div>
+<script src="createorder.js"></script>
+</body>
+</html>
