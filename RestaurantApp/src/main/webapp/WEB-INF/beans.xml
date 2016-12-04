@@ -14,7 +14,7 @@
 	<context:component-scan base-package="com.revature"/>
 	
 	<!-- Setting up Static resouces -->
-	<mvc:resources mapping="/**" location="/WEB-INF/pages/" cache-period="31556926"/>
+	<mvc:resources mapping="/**" location="/pages" cache-period="31556926"/>
 	
 	<!-- Set up our front controller -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -22,7 +22,7 @@
 			<value>/WEB-INF/pages/</value>
 		</property>
 		<property name="suffix">
-			<value>.jsp</value>
-		</property>
+			<value>.html</value>
+		</property> 
 	</bean>
 </beans>

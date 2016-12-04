@@ -12,6 +12,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="ACCOUNTS")
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -25,7 +27,10 @@ public abstract class User implements Serializable {
 	@GeneratedValue(generator="ACCOUNT_SEQ",strategy=GenerationType.SEQUENCE)
 	@Column(name="A_ID")
 	private int userId;
-	
+	@NotEmpty(message="Please enter a username")
+	@Column(name="U_NAME")
+	private String username;
+	@NotEmpty
 	@Column(name="P_WORD")
 	private int password;
 	@Column(name="MY_SALT")
