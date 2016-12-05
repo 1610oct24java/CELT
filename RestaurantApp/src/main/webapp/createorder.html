@@ -9,14 +9,51 @@
 	<h2>Not Raising Canes</h2>
 	<div>
 	<form ng-submit="processForm()">
-		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m1" />Chicken Tenders <span ng-bind="m1"></span></div>
-		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m2" />Fries <span ng-bind="m2"></span></div>
-		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m3" />Texas Toast <span ng-bind="m3"></span></div>
-		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m4" />Coleslaw <span ng-bind="m4"></span></div>
-		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m5" />Lemonade <span ng-bind="m5"></span></div>
-		<div><input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m6" />Tea <span ng-bind="m6"></span></div>
+		<div>
+			<input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m1" />
+			Chicken Tenders 
+			<span ng-bind="m1"></span>
+			<input type="number" ng-model="p1" ng-init="p1=2" value="2" readonly />
+			<span ng-model="s1">{{m1*p1}}</span>
+		</div>
+		<div>
+			<input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m2" />
+			Fries
+			<span ng-bind="m2"></span>
+			<input type="number" ng-model="p2" ng-init="p2=1.5" value="1.5" readonly />
+			<span ng-model="s2">{{m2*p2}}</span>
+		</div>
+		<div>
+			<input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m3" />
+			Texas Toast 
+			<span ng-bind="m3"></span>
+			<input type="number" ng-model="p3" ng-init="p3=1" value="1" readonly />
+			<span ng-model="s3">{{m3*p3}}</span>
+		</div>
+		<div>
+			<input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m4" />
+			Coleslaw 
+			<span ng-bind="m4"></span>
+			<input type="number" ng-model="p4" ng-init="p4=.5" value=".5" readonly />
+			<span ng-model="s4">{{m4*p4}}</span>
+		</div>
+		<div>
+			<input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m5" />
+			Lemonade 
+			<span ng-bind="m5"></span>
+			<input type="number" ng-model="p5" ng-init="p5=1.5" value="1.5" readonly />
+			<span ng-model="s5">{{m5*p5}}</span>
+		</div>
+		<div>
+			<input type="number" min="0" max="20" ng-show="showTheBox" ng-model="m6" />
+			Tea 
+			<span ng-bind="m6"></span>
+			<input type="number" ng-model="p6" ng-init="p6=1.5" value="1.5" readonly />
+			<span ng-model="s6">{{m6*p6}}</span>
+		</div>
 		<input type="submit" name="submitOrder" value="Submit Order"/>
 		<!-- <input type="reset"/> -->
+		<span>{{s1+s2+s3+s4+s5+s6}}</span>
 	</form>
 	</div>
 <script src="createorder.js"></script>
