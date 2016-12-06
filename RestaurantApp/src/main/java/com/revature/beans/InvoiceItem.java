@@ -77,7 +77,6 @@ public class InvoiceItem implements Serializable {
 
 
 	public InvoiceItem() {
-		// TODO Auto-generated constructor stub
 	}
 
 

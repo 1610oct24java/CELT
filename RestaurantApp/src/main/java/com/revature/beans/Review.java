@@ -139,7 +139,6 @@ public class Review implements Serializable {
 
 
 	public Review() {
-		// TODO Auto-generated constructor stub
 	}
 
 }
