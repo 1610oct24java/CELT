@@ -7,9 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="MENU_ITEM")
@@ -30,10 +33,12 @@ public class FoodItem implements Serializable {
 	@Column(name="PRICE")
 	private float price;
 	@ManyToOne
+	@JoinColumn(name="R_ID")
+	@JsonIgnore
 	private Restaurant restaurant;
 	@Column(name="MI_SPECIAL")
 	private boolean isSpecial;
-	private boolean soldOut;
+	//private boolean soldOut;
 	
 	public int getId() {
 		return id;
@@ -72,13 +77,15 @@ public class FoodItem implements Serializable {
 		this.isSpecial = isSpecial;
 	}
 	public boolean isSoldOut() {
-		return soldOut;
+		//return soldOut;
+		return false;
 	}
 	public void setSoldOut(boolean soldOut) {
-		this.soldOut = soldOut;
+		//this.soldOut = soldOut;
 	}
 	public FoodItem() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	public FoodItem(int id, String name, String description, float price, Restaurant restaurant, boolean isSpecial,
 			boolean soldOut) {
@@ -89,12 +96,12 @@ public class FoodItem implements Serializable {
 		this.price = price;
 		this.restaurant = restaurant;
 		this.isSpecial = isSpecial;
-		this.soldOut = soldOut;
+		//this.soldOut = soldOut;
 	}
 	@Override
 	public String toString() {
 		return "FoodItem [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", restaurant=" + restaurant + ", isSpecial=" + isSpecial + ", soldOut=" + soldOut + "]";
+				+ ", restaurant=" + restaurant + ", isSpecial=" + isSpecial /*+ ", soldOut=" + soldOut*/ + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -106,7 +113,7 @@ public class FoodItem implements Serializable {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + Float.floatToIntBits(price);
 		result = prime * result + ((restaurant == null) ? 0 : restaurant.hashCode());
-		result = prime * result + (soldOut ? 1231 : 1237);
+		/*result = prime * result + (soldOut ? 1231 : 1237);*/
 		return result;
 	}
 	@Override
@@ -138,9 +145,9 @@ public class FoodItem implements Serializable {
 			if (other.restaurant != null)
 				return false;
 		} else if (!restaurant.equals(other.restaurant))
-			return false;
+			return false;/*
 		if (soldOut != other.soldOut)
-			return false;
+			return false;*/
 		return true;
 	}
 }

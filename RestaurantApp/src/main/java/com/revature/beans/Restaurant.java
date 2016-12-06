@@ -156,5 +156,6 @@ public class Restaurant implements Serializable{
 
 	public Restaurant() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 }

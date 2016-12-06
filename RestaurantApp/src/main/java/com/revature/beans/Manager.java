@@ -11,10 +11,6 @@ import javax.persistence.Table;
 @Table(name="MANAGERS")
 @PrimaryKeyJoinColumn(name="M_ID")
 public class Manager extends User {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4202380130122285344L;
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="R_ID")
 	private Restaurant restaurant;
@@ -59,6 +55,7 @@ public class Manager extends User {
 
 	public Manager() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Manager(int userId, String password, String salt, Restaurant restaurant) {
