@@ -12,7 +12,7 @@ import com.revature.util.HibernateUtil;
 public class CustomerDAOImpl implements CustomerDAO {
 
 	private Session session;
-	public Customer createCustomer(Customer customer) throws HibernateException{
+	public Customer createCustomer(Customer customer){
 		session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
 		System.out.println(customer.toString());

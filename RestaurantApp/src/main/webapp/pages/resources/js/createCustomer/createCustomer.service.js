@@ -13,8 +13,9 @@
 	    	        .post('cCustomer', customer)
 	    	          .then(response => response.data)
 	    	          .then(customer => {
-	    	        	  customer == null ? $state.go('createCustomerFailure', {method: "GET"})
-	    	          		 : $state.go('createCustomerSuccess',{method:"GET"})        
+	    	        	  console.log(customer);
+	    	        	  customer.id == null ? $state.go('createCustomerFailure')
+    	          		 : $state.go('createCustomerSuccess')        
 	    	      })
 	    	 }
 	    } 	   	
