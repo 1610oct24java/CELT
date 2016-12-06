@@ -47,7 +47,7 @@ public class Customer extends User {
 	}
 	@Override
 	public String toString() {
-		return "Customer [firstName=" + firstName + ", lastName=" + lastName + "]";
+		return super.toString() + " Customer [firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 	@Override
 	public int hashCode() {

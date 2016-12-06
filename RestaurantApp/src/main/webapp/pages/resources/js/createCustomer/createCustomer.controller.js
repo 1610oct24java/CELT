@@ -5,10 +5,11 @@
     .module('awesome-app.createCustomer')
     .controller('CreateCustomerController', CreateCustomerController);
     
-  		CreateCustomerController.$inject = ['createCustomerService', '$state'];
+  		CreateCustomerController.$inject = ['createCustomerService'];
 
-    function CreateCustomerController(createCustomerService, $state) {
-    	this.customer = {
+    function CreateCustomerController(createCustomerService) {
+    	this.customer = {	
+    			userId : 0,
     			firstName : "",
     			lastName : "",
     			username : "",
@@ -22,7 +23,7 @@
     	{
     		alert("Last Name is Required");
     		return;
-    	} else if (this.user.username == "")
+    	} else if (this.customer.username == "")
     	{
     		alert("Username is Required");
     		return;

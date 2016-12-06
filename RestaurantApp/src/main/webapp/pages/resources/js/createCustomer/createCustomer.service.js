@@ -5,16 +5,18 @@
 	    .module('awesome-app.createCustomer')
 	    .service('createCustomerService', CreateCustomerService);
 
-	    CreateCustomerService.$inject = [ '$http' ];
-     //get with scrum master to connect front to back end.
-	    function CreateCustomerService($http) {
+	    CreateCustomerService.$inject = [ '$http', '$state'];
+
+	    function CreateCustomerService($http, $state) {	  
 	    	 this.create = (customer) => {
-	    	        return $http
-	    	          .post('/createCustomer', customer)
+	    	       $http //note because of the => syntax the return is implied
+	    	        .post('cCustomer', customer)
 	    	          .then(response => response.data)
-	    	          .then(customer => 
-	    	          	customer == null ? $state.go('createCustomerFailure')
-	    	          		 : $state.go('createCustomerSuccess'))
-	    	      };
-	    }
+	    	          .then(customer => {
+	    	        	  customer == null ? $state.go('createCustomerFailure', {method: "GET"})
+	    	          		 : $state.go('createCustomerSuccess',{method:"GET"})        
+	    	      })
+	    	 }
+	    } 	   	
+	    
 })();	    

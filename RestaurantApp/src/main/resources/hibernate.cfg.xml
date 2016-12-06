@@ -7,7 +7,7 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		
 		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
-		<property name="hibernate.connection.username">localcelt</property>
+		<property name="hibernate.connection.username">celt</property>
 		<!-- <property name="hibernate.connection.url">jdbc:oracle:thin:@restaurant.cxyz3up19zfl.us-west-2.rds.amazonaws.com:1521:ORCL</property>
 		<property name="hibernate.connection.username">CELT</property> -->
 		<property name="hibernate.connection.password">p4ssw0rd</property>

@@ -2,6 +2,7 @@ package com.revature.beans;
 
 import java.io.Serializable;
 import java.security.SecureRandom;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -30,12 +33,30 @@ public abstract class User implements Serializable {
 	@NotEmpty(message="Please enter a username")
 	@Column(name="U_NAME")
 	private String username;
-	@NotEmpty
+	@NotNull
 	@Column(name="P_WORD")
 	private int password;
 	@Column(name="MY_SALT")
 	private String salt;
 	
+	public User(int userId, String username, int password, String salt) {
+		super();
+		this.userId = userId;
+		this.username = username;
+		this.password = password;
+		this.salt = salt;
+	}
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", salt=" + salt + "]";
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public int getUserId() {
 		return userId;
 	}
@@ -93,10 +114,7 @@ public abstract class User implements Serializable {
 		this.salt = salt;
 		this.setPassword(password);
 	}
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", password=" + password + ", salt=" + salt + "]";
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

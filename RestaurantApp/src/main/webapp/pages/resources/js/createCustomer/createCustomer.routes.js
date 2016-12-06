@@ -4,8 +4,8 @@
     .constant('createCustomerRoutes', {
     	//from my understanding this is called from the ui-sref
       createCustomer : {
-        url: '/pages/',
-        templateUrl: 'createCustomer.template.html',
+        url: '/createCustomer',
+        templateUrl: '/RestaurantApp/pages/createCustomer.template.html',
         controller: 'CreateCustomerController',
         controllerAs: '$createCustomer'//,
 //blocker need to get with Travis for login stuff
@@ -16,14 +16,14 @@
       },
       
       createCustomerSuccess: {
-    	  url: '/pages/',
-    	  templateUrl:'createCustomerSuccess.template.html',
+    	  url: '/WINNER_WINNER_BIG_CHICKEN_DINNER/',
+    	  templateUrl:'/RestaurantApp/pages/createCustomerSuccess.template.html',
     	  controller: 'CreateCustomerController',
     	  controllerAs: '$createCustomer'
       },
       createCustomerFailure: {
-    	  url: '/pages/',
-    	  templateUrl: 'createCustomerFailure.template.html',
+    	  url: '/WAT/',
+    	  templateUrl: '/RestaurantApp/pages/createCustomerFailure.template.html',
     	  controller: 'CreateCustomerController',
     	  controllerAs: '$createCustomer'
       }

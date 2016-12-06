@@ -3,7 +3,10 @@ package com.revature.beans;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +18,8 @@ public class ContactInfo implements Serializable {
 	private static final long serialVersionUID = 7929748897411870510L;
 	@Id
 	@Column(name="CI_ID")
+	@SequenceGenerator(sequenceName="CI_ID_SEQ", name="CI_ID_SEQ")
+	@GeneratedValue(generator="CI_ID_SEQ", strategy=GenerationType.SEQUENCE)
 	private int id;
 	@Column(name="STREET")
 	private String street;
