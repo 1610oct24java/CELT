@@ -3,19 +3,18 @@ package com.revature.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.revature.beans.FoodItem;
-import com.revature.dao.RestaurantMenuDao;
 import com.revature.util.HibernateUtil;
 
 public class MenuDao implements RestaurantMenuDao {
 	
 	@Override
 	public void createMenuItem(FoodItem noms) {
-		// TODO Auto-generated method stub
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
 		
@@ -26,7 +25,6 @@ public class MenuDao implements RestaurantMenuDao {
 
 	@Override
 	public FoodItem readMenuItem(int foodItemId) {
-		// TODO Auto-generated method stub
 		Session session = HibernateUtil.getSession();
 		
 		FoodItem item = (FoodItem) session.createCriteria(FoodItem.class)
@@ -38,7 +36,6 @@ public class MenuDao implements RestaurantMenuDao {
 
 	@Override
 	public List<FoodItem> getAllItems() {
-		// TODO Auto-generated method stub
 		Session session = HibernateUtil.getSession();
 		Criteria ct;
 		List<FoodItem> foodItems = session.createCriteria(FoodItem.class).list();
@@ -48,21 +45,25 @@ public class MenuDao implements RestaurantMenuDao {
 
 	@Override
 	public FoodItem updateMenuItem(FoodItem noms) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int deleteFoodItem(FoodItem noms) {
-		// TODO Auto-generated method stub
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
 		
-		//Yeah you're gonna have to remove this
-		//I know you're mad at me but I needed to test
-		//You understand right?
-		session.save(noms);
-		session.delete(noms);
+		FoodItem item;
+		
+		try{
+			item = (FoodItem) session.load(FoodItem.class, noms.getId());
+		} catch (ObjectNotFoundException e) {
+			tx.rollback();
+			session.close();
+			return 0;
+		}
+		
+		session.delete(item);
 		tx.commit();
 		session.close();
 		

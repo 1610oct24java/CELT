@@ -1,7 +1,7 @@
 package com.revature.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -25,8 +25,6 @@ public class MenuController {
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.GET)
 	public List<FoodItem> getMenu(HttpSession session) throws NoAuthorizedUserException{
-		//Hey! Future me! Be sure to change this to the session user
-		//If you don't this'll never actually work >.>
 		
 		Manager manager = (Manager) session.getAttribute("currentUser");
 		
@@ -40,25 +38,20 @@ public class MenuController {
 	@RequestMapping(method=RequestMethod.POST)
 	public String addItemsToMenu(@RequestBody String JsonMenu){
 		ObjectMapper om = new ObjectMapper();
-		List<FoodItem> menu = new ArrayList<FoodItem>();
 		System.out.println(JsonMenu);
 		
 		try {			
 			FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
 			
-			for(FoodItem item : menuArray){
-				menu.add(item);
-			}
-			
-			new MenuService().addMenuItems(menu);
+			new MenuService().addMenuItems(Arrays.asList(menuArray));
 		} catch (org.codehaus.jackson.JsonParseException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (org.codehaus.jackson.map.JsonMappingException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
@@ -68,23 +61,18 @@ public class MenuController {
 	@RequestMapping(method=RequestMethod.DELETE)
 	public String deleteMenu(@RequestBody String JsonMenu){
 		ObjectMapper om = new ObjectMapper();
-		List<FoodItem> menu = new ArrayList<FoodItem>();
 		try {			
 			FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
 			
-			for(FoodItem item : menuArray){
-				menu.add(item);
-			}
-			
-			new MenuService().deleteMenu(menu);
+			new MenuService().deleteMenu(Arrays.asList(menuArray));
 		} catch (org.codehaus.jackson.JsonParseException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (org.codehaus.jackson.map.JsonMappingException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		

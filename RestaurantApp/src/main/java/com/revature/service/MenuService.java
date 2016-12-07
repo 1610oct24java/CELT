@@ -17,8 +17,7 @@ public class MenuService {
 		int rows = 0;
 		
 		for(FoodItem item : menu){
-			rmd.deleteFoodItem(item);
-			rows++;
+			rows += rmd.deleteFoodItem(item);
 		}
 		
 		return rows;

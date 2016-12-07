@@ -5,18 +5,12 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 <meta charset="ISO-8859-1">
-    <script src="menuData/scripts/main.js"></script>
-    <script src="menuData/scripts/menu.js"></script>
-    <script src="menuData/scripts/editMenu.js"></script>
-	<script src="menuData/scripts/getMenu.js"></script>
-<link rel=stylesheet href="menuData/stylesheets/main.css">
 </head>
 <body ng-app="restaurantApp">
     <div ng-controller="restaurantController">
         <h1>Welcome Manager!</h1>
-        <!-- display the restaurant's name and menu -->
         <h2>{{ restaurant.name }}</h2>
-        <p> Current raiting: {{ restaurant.raiting }} stars</p>
+        <p> Current rating: {{ restaurant.raiting }} stars</p>
         <form ng-submit="addMenuItem()">
             <input type="text" ng-model="newName" size="10" placeholder="Name" required ng-style="inputStyle" style=""/>
             <input type="text" ng-model="newDescription" size="30" placeholder="Description" ng-style="inputStyle" style=""/>
@@ -31,8 +25,7 @@
             <span> {{ food.description }} </span>
         </div>
     	
-		<!-- ng-click event calls remove() to delete checked items -->
-    	<button ng-click="remove($food)">Remove Selected Items From Menu</button>
+		<button ng-click="remove($food)">Remove Selected Items From Menu</button>
 		
 		<div class="deletions" ng-hide="hideDeleted">
 			<div class="deletedItems" ng-repeat="deletedFood in deletedMenu">
@@ -45,5 +38,11 @@
 			<button ng-click="commit()">Commit Changes</button>
 		</div>
     </div>
+    
+    <script src="menuData/scripts/main.js"></script>
+    <script src="menuData/scripts/menu.js"></script>
+    <script src="menuData/scripts/editMenu.js"></script>
+	<script src="menuData/scripts/getMenu.js"></script>
+	<link rel=stylesheet href="menuData/stylesheets/main.css"/>
 </body>
 </html>
