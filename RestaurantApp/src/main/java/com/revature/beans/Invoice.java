@@ -77,7 +77,6 @@ public class Invoice implements Serializable {
 	}
 
 	public Invoice() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Invoice(int id, String status, double total, ContactInfo contact, Customer customer) {

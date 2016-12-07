@@ -38,17 +38,16 @@ public class Customer extends User {
 	}
 	public Customer() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public Customer(int userId, String password, String salt, String firstName, String lastName) {
 		super(userId, password, salt);
-		// TODO Auto-generated constructor stub
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
 	@Override
 	public String toString() {
-		return "Customer [firstName=" + firstName + ", lastName=" + lastName + "]";
+		return super.toString() + " Customer [firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 	@Override
 	public int hashCode() {

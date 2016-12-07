@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -29,7 +28,6 @@ public class Review implements Serializable {
 	@Column(name="COMMENTS")
 	private String comment;
 	@ManyToOne
-	@JoinColumn(name="R_ID")
 	private Restaurant restaurant;
 	
 	
@@ -141,7 +139,6 @@ public class Review implements Serializable {
 
 
 	public Review() {
-		// TODO Auto-generated constructor stub
 	}
 
 }
