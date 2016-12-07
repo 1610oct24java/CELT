@@ -97,6 +97,9 @@ app.controller('restaurantController',
 				menuFactory.deleteMenu(toDelete);
 			if(trueAdd[0])
 				menuFactory.postMenu(trueAdd);
+			
+			$scope.deletedMenu = [];
+			$scope.hideDeleted = true;
 		};
 	}]);
 

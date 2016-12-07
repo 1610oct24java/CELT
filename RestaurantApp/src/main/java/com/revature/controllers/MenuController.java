@@ -4,20 +4,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-//import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.beans.ContactInfo;
 import com.revature.beans.FoodItem;
 import com.revature.beans.Manager;
-import com.revature.beans.Restaurant;
-import com.revature.beans.Review;
+import com.revature.exception.NoAuthorizedUserException;
 import com.revature.service.MenuService;
 
 @Controller
@@ -26,15 +24,15 @@ public class MenuController {
 	
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.GET)
-	public List<FoodItem> getMenu(ModelMap modelMap){
+	public List<FoodItem> getMenu(HttpSession session) throws NoAuthorizedUserException{
 		//Hey! Future me! Be sure to change this to the session user
 		//If you don't this'll never actually work >.>
-		Manager manager = new Manager(1, "password", "123456",
-					new Restaurant(1, "Chicken Stop", 
-						new ArrayList<FoodItem>(), new ArrayList<Review>(), 
-							new ContactInfo(1, "1500 Golden Arches Way", "New York", "New York", "12345", "1800eatfresh", "RMcDonald@MCo.com")));
-		manager.getRestaurant().getMenu().add(new FoodItem(1, "Chicken", "It's literally just chicken", 8.50f, manager.getRestaurant(), false, false));
-		manager.getRestaurant().getMenu().add(new FoodItem(2, "Chicken with Fries", "Is there honestly anything I need to explain?", 12.50f, manager.getRestaurant(), false, false));
+		
+		Manager manager = (Manager) session.getAttribute("currentUser");
+		
+		if(manager == null){
+			throw new NoAuthorizedUserException("Manager Not Defined");
+		}
 		
 		return manager.getRestaurant().getMenu();
 	}
@@ -64,7 +62,7 @@ public class MenuController {
 			e.printStackTrace();
 		}
 		
-		return "redirect:http://www.google.com";
+		return "redirect:/home";
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE)
@@ -90,6 +88,6 @@ public class MenuController {
 			e.printStackTrace();
 		}
 		
-		return "redirect:http://www.google.com";
+		return "redirect:/home";
 	}
 }
