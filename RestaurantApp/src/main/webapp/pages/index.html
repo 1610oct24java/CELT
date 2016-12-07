@@ -11,6 +11,9 @@
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 </head>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+</head>
 <body class="container-fluid">
 
 	<nav class="navbar navbar-default">
@@ -48,6 +51,10 @@
 		<div ui-view>
 		</div>
 	</div>
+	
+	<!-- Temporary placeholder until the reset gets added -->
+	<a ui-sref="deliveryAddress">Add Delivery Address</a>
+	
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
 	<!-- Angular Bootstrap Ui Requires the Bootstrap CSS file, jQuery and Bootstrap.js are not needed-->
@@ -56,6 +63,11 @@
 	<script src="pages/resources/js/app.module.js"></script>
 	<script src="pages/resources/js/app.config.js"></script>
 	<script src="pages/resources/js/app.run.js"></script>
+	<script src="pages/resources/js/deliveryInformation/deliveryInformation.module.js"></script>
+	<script src="pages/resources/js/deliveryInformation/deliveryInformation.controller.js"></script>
+	<script src="pages/resources/js/deliveryInformation/deliveryInformation.service.js"></script>
+	<script src="pages/resources/js/deliveryInformation/deliveryInformation.routes.js"></script>
+	<script src="pages/resources/js/deliveryInformation/deliveryInformation.config.js"></script>
 	<script src="pages/resources/js/createCustomer/createCustomer.module.js"></script>
 	<script src="pages/resources/js/createCustomer/createCustomer.controller.js"></script>
 	<script src="pages/resources/js/createCustomer/createCustomer.service.js"></script>

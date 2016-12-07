@@ -9,7 +9,7 @@
 		function createContactInfo($http, $state) {
 					this.info = {};
 					$http
-						.post('/addAddress', contactInfo)
+						.post('/addContactInfo', contactInfo)
 						.then(response => response.data)
 						.then(contactInfo => {
 							console.log(contactInfo);

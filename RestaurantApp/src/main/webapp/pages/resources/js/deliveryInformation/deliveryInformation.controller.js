@@ -9,13 +9,13 @@
 	
 		deliveryInformationService => {
 			this.contactInfo = {
-                    ID : 0,
-					Phone : "",
-					Email : "",
-					Street :"",
-					City : "",
-					State : "",
-					Zip : ""
+                    id : 0,
+					phone : "",
+					email : "",
+					street :"",
+					city : "",
+					state : "",
+					zip : ""
 			}
 			this.create = () => {
 				
@@ -42,13 +42,13 @@
 				}
 				
 				this.contactInfo = {
-	                    ID : 0,
-						Phone : "",
-						Email : "",
-						Street :"",
-						City : "",
-						State : "",
-						Zip : ""
+	                    id : 0,
+						phone : "",
+						email : "",
+						street :"",
+						city : "",
+						state : "",
+						zip : ""
 				}
 				
 			}

@@ -26,7 +26,7 @@ public class UserController {
 	 */
 
 	@RequestMapping(value="/cCustomer", method=RequestMethod.POST)
-	public @ResponseBody Customer createUser(@RequestBody Customer customer, ModelMap map){
+	public @ResponseBody Customer createUser(@RequestBody Customer customer){
 	return cdao.createCustomer(customer);
 	//	return "redirect:pages/index.html";
 	}
