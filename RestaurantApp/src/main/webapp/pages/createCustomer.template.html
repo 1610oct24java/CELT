@@ -1,0 +1,41 @@
+
+<div class="container">
+			<form role="form" class="form-horizontal" method="POST">
+				<div class="form-group row">
+					<label for="firstName" class="col-xs-2 control-label">First Name:</label> 
+						<div class="col-xs=10"> 
+							<input type="text"
+								name="firstName" id="firstName" class="form-control"
+								ng-model="$createCustomer.customer.firstName"
+								placeholder="Enter First Name">
+						</div>
+				</div>
+				<div class="form-group row">
+					<label for="lastName" class="col-xs-2 control-label">Last Name:</label> 
+						<div class="col-xs=10"> 
+							<input type="text" name="lastName" id="lastName"
+								class="form-control" ng-model="$createCustomer.customer.lastName"
+								placeholder="Enter Last Name">
+						</div>
+				</div>
+				<div class="form-group row">
+					<label for="username" class="col-xs-2 control-label">Username:</label>
+					<div class="col-xs=10">
+						<input type="text" name="userName" id="userName" class="form-control"
+							ng-model="$createCustomer.customer.username"
+							placeholder="Enter Username">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="pwd" class="col-xs-2 control-label">Password:</label> 
+					<div class="col-xs=10"> 
+						<input type="password" class="form-control" name="password" id="password"
+						ng-model="$createCustomer.customer.password" placeholder="Enter Password">
+					</div>	
+				</div>
+				<button type="submit" class="btn btn-primary"
+					ng-click="$createCustomer.create()">Sign Up</button>
+			</form>
+		</div>
+	
+</div>
