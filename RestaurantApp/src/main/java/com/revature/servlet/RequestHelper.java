@@ -3,6 +3,10 @@ package com.revature.servlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.beans.User;
+import com.revature.dao.UserDAO;
+import com.revature.dao.UserDAOImp;
+
 public class RequestHelper {
 	
 	public String process(HttpServletRequest request, HttpServletResponse response){
@@ -11,10 +15,10 @@ public class RequestHelper {
 		
 		switch(request.getRequestURI()) {
 		case "/RestaurantApp/login.do":
-			accountID = checkLogin(request.getParameter("username"), request.getParameter("password"));
-			if (accountID > 0) {
+			User user = checkLogin(request.getParameter("username"), request.getParameter("password"));
+			if (user != null) {
 				// valid user so save userID in the session
-				request.getSession().setAttribute("userID", accountID);
+				request.getSession().setAttribute("user", user);
 				if (accountID == 1) {
 					direct = "customer.html";
 				} else {
@@ -29,14 +33,17 @@ public class RequestHelper {
 		return direct;
 	}
 
-	public int checkLogin(String username, String password) {
-		if (username.equals("me")) {
-
-			return 1;
-		} else if (username.equals("you")) {
-
-			return 2;
-		}
-		return 0;
+	public User checkLogin(String username, String password) {
+//		if (username.equals("me")) {
+//
+//			return 1;
+//		} else if (username.equals("you")) {
+//
+//			return 2;
+//		}
+//		return 0;
+		UserDAO userDAO = new UserDAOImp();
+		User user = userDAO.checkLogin(username, password);
+		return user;
 	}
 }
