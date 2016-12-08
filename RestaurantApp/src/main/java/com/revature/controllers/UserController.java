@@ -15,6 +15,12 @@ public class UserController {
 
 	@Autowired
 	private CustomerDAO cdao;
+	
+	@RequestMapping(value="/home", method=RequestMethod.GET)
+	public String getIndex(){
+		return "redirect:index.html";
+		
+	}
 
 	@RequestMapping(value="/cCustomer", method=RequestMethod.POST)
 	public @ResponseBody Customer createUser(@RequestBody Customer customer){

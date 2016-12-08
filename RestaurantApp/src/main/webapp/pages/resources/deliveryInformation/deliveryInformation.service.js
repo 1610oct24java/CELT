@@ -1,13 +1,14 @@
 'use strict';
 
 (() => {
-	angular.module('')
-		.service('deliveryInformationService', deliverInformationService)
+	angular.module('awesome-app.deliveryInformation')
+		.service('deliveryInformationService', deliveryInformationService)
 		
-		deliverInformationService.$inject = [ '$http', '$state']
+		deliveryInformationService.$inject = [ '$http', '$state']
 	
-		function createContactInfo($http, $state) {
-					this.info = {};
+		function deliveryInformationService($http, $state) {
+			function createContactInfo() {
+				this.info = {};
 					$http
 						.post('/addContactInfo', contactInfo)
 						.then(response => response.data)
@@ -24,5 +25,5 @@
 				
 			}
 		
-		
+		}
 })();

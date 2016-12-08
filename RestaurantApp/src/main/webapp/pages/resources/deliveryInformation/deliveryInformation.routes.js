@@ -5,7 +5,7 @@
 		.constant('deliveryInformationRoutes', {	
 			deliveryAddress : {
 				url : '/createDeliveryInformation',
-				templateUrl : '/RestaurantApp/deliveryInformation.template.html',
+				templateUrl : '/RestaurantApp/resources/deliveryInformation.template.html',
 				controller : 'deliveryInformationController',
 				controllerAs : '$deliveryInformationCtrl'
 			}

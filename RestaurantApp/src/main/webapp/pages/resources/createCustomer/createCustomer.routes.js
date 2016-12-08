@@ -5,7 +5,7 @@
     	//from my understanding this is called from the ui-sref
       createCustomer : {
         url: '/createCustomer',
-        templateUrl: '/RestaurantApp/createCustomer/createCustomer.template.html',
+        templateUrl: '/RestaurantApp/resources/createCustomer/createCustomer.template.html',
         controller: 'CreateCustomerController',
         controllerAs: '$createCustomer'//,
         	//blocker need to get with Travis for login stuff
@@ -17,13 +17,13 @@
       
       createCustomerSuccess: {
     	  url: '/WINNER_WINNER_BIG_CHICKEN_DINNER/',
-    	  templateUrl:'/RestaurantApp/createCustomer/createCustomerSuccess.template.html',
+    	  templateUrl:'/RestaurantApp/resources/createCustomer/createCustomerSuccess.template.html',
     	  controller: 'CreateCustomerController',
     	  controllerAs: '$createCustomer'
       },
       createCustomerFailure: {
     	  url: '/WAT/',
-    	  templateUrl: '/RestaurantApp/createCustomer/createCustomerFailure.template.html',
+    	  templateUrl: '/RestaurantApp/resources/createCustomer/createCustomerFailure.template.html',
     	  controller: 'CreateCustomerController',
     	  controllerAs: '$createCustomer'
       }
