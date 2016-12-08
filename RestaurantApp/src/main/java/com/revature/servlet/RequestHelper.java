@@ -11,17 +11,20 @@ public class RequestHelper {
 	
 	public String process(HttpServletRequest request, HttpServletResponse response){
 		String direct = "index.html";
-		int accountID = 0;
+		UserDAO userDAO = new UserDAOImp();
 		
 		switch(request.getRequestURI()) {
 		case "/RestaurantApp/login.do":
 			User user = checkLogin(request.getParameter("username"), request.getParameter("password"));
 			if (user != null) {
 				// valid user so save userID in the session
-				request.getSession().setAttribute("user", user);
-				if (accountID == 1) {
-					direct = "customer.html";
-				} else {
+				//request.getSession().setAttribute("user", user);
+				//if () {
+//					direct = "customer.html";
+//				} else {
+//					direct = "restaurant.html";
+//				}
+				if (userDAO.getManagerByID(user.getUserId()) != null){
 					direct = "restaurant.html";
 				}
 			}
