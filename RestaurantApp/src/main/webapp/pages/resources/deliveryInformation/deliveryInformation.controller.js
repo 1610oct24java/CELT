@@ -7,7 +7,7 @@
 		
 		deliveryInformationController.$inject = ['deliveryInformationService'];
 	
-		deliveryInformationService => {
+		function deliveryInformationController(deliveryInformationService) {
 			this.contactInfo = {
                     id : 0,
 					phone : "",
@@ -17,6 +17,7 @@
 					state : "",
 					zip : ""
 			}
+			
 			this.create = () => {
 				
 				if(this.contactInfo.Phone == ""){
@@ -40,7 +41,7 @@
 				}else {
 					deliveryInformationService.createContactInfo(contactInfo);
 				}
-				
+	
 				this.contactInfo = {
 	                    id : 0,
 						phone : "",
@@ -50,7 +51,6 @@
 						state : "",
 						zip : ""
 				}
-				
 			}
 		};
 })();

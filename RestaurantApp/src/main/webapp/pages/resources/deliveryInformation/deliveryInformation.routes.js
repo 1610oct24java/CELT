@@ -2,11 +2,10 @@
 
 (()=>{
 	angular.module('awesome-app.deliveryInformation')
-		.constant('deliveryInformaitionRoutes', {
-			
+		.constant('deliveryInformationRoutes', {	
 			deliveryAddress : {
 				url : '/createDeliveryInformation',
-				templateUrl : '/RestaurantApp/pages/deliveryInformation.template.html',
+				templateUrl : '/RestaurantApp/deliveryInformation.template.html',
 				controller : 'deliveryInformationController',
 				controllerAs : '$deliveryInformationCtrl'
 			}

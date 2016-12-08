@@ -6,7 +6,7 @@
 		
 		config.$inject = ['deliveryInformationRoutes', '$stateProvider'];
 	
-		(deliveryInformationRoutes, $stateProvider) => {
+		function config(deliveryInformationRoutes, $stateProvider) {
 			Object.key(deliveryInformationRoutes)
 				.foreach(key => {
 					$stateProvider

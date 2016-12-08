@@ -8,7 +8,7 @@
   config.$inject = ['$locationProvider', '$urlRouterProvider'];
 
   function config($locationProvider, $urlRouterProvider) {
- //   $urlRouterProvider.otherwise('/RestaurantApp/');
+    $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);
   }
 })();
