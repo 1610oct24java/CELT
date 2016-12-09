@@ -16,13 +16,12 @@ public class Logging {
 	
 	@Around("execution(* com.revature..*(..))")
 	public Object log(ProceedingJoinPoint pjp) throws Throwable{
-		System.out.println("Logger works so wtf");
 		MethodSignature signature = (MethodSignature) pjp.getSignature();
 		String methodClass = signature.getDeclaringTypeName().toString();
 		String method = signature.getName().toString();
 		Object result;
 		
-		logDashes();
+		log.trace(dashes);
 		
 		log.trace(methodClass + " ==> " + method);
 		Object[] args = pjp.getArgs();
@@ -35,7 +34,7 @@ public class Logging {
 		
 		log.trace(methodClass + " ==> " + method + " - Exit\nReturning: " + result);
 
-		logDashes();
+		log.trace(dashes);
 		return result;
 	}
 	
@@ -46,9 +45,5 @@ public class Logging {
 			log.error(st.getMethodName() + " at line " + st.getLineNumber());
 		}
 		log.error(dashes);
-	}
-
-	private void logDashes(){
-		log.trace(dashes);
 	}
 }
