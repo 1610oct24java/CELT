@@ -31,41 +31,20 @@ public class UserDAOImp implements UserDAO {
 			returnUser = (User) user;
 		}
 		if (returnUser != null) {
-			// username was not found
+			// username was found
 			if (returnUser.checkPassword(password)) {
 				// login is correct
 				return returnUser;
+				
 			} else {
 				// password is incorrect
 				return null;
+				
 			}
 		}
+		// username was not found
 		return null;
 	}
-//	Session session = HibernateUtil.getSession();
-//	Query query;
-//	String hql;
-//	Transaction tx;
-//	User returnUser = null;
-//
-//	hql = "FROM Manager AS M WHERE M.username = :u_name";
-//	query = session.createQuery(hql);
-//	query.setParameter("u_name", username);
-//	List users = query.list();
-//	System.out.println(users.toString());
-//	for (Object user : users) {
-//		returnUser = (User) user;
-//	}
-//	if (returnUser != null) {
-//		// username was not found
-//		if (returnUser.checkPassword(password)) {
-//			return returnUser;
-//		} else {
-//			// password is incorrect
-//			return null;
-//		}
-//	}
-//	return null;
 
 	@Override
 	public Manager getManagerByID(int id) {
@@ -87,7 +66,19 @@ public class UserDAOImp implements UserDAO {
 
 	@Override
 	public Customer getCustomerByID(int id) {
-		
-		return null;
+		Session session = HibernateUtil.getSession();
+		Query query;
+		String hql;
+		Transaction tx;
+		Customer returnCustomer = null;
+
+		hql = "FROM Customer AS C WHERE C.userId = :accountID";
+		query = session.createQuery(hql);
+		query.setParameter("accountID", id);
+		List customers = query.list();
+		for (Object customer : customers) {
+			returnCustomer = (Customer) customer;
+		}
+		return returnCustomer;
 	}
 }
