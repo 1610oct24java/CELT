@@ -2,7 +2,6 @@
 (() => {  
 	angular.module('awesome-app.createCustomer')
     .constant('createCustomerRoutes', {
-    	//from my understanding this is called from the ui-sref
       createCustomer : {
         url: '/createCustomer',
         templateUrl: '/RestaurantApp/resources/createCustomer/createCustomer.template.html',

@@ -18,8 +18,7 @@ public class DeliveryInfoController {
 
 	@RequestMapping(value = "/addContactInfo", method = RequestMethod.POST)
 	public @ResponseBody ContactInfo saveContactInfo(@RequestBody ContactInfo ci) {
-		ddao.saveContactInfo(ci);
-		return ci;
+		return ddao.saveContactInfo(ci);
 	}
 
 }

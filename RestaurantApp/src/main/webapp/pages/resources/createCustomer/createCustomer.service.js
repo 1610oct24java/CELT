@@ -1,4 +1,4 @@
-	'use strict';
+'use strict';
 
 (() => {
 	  angular
@@ -13,7 +13,6 @@
 	    	        .post('cCustomer', customer)
 	    	          .then(response => response.data)
 	    	          .then(customer => {
-	    	        	  console.log(customer);
 	    	        	  customer.id == null ? $state.go('createCustomerFailure')
     	          		 : $state.go('createCustomerSuccess')        
 	    	      })

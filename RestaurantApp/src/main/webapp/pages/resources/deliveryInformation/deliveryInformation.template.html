@@ -6,7 +6,7 @@
 			<div class="col-xs=10">
 				<input type="tel" name="phone" id="phone"
 					class="form-control" ng-model="$deliveryInformationCtrl.contactInfo.phone"
-					placeholder="###-###-####" pattern="\d{3}[\-]\d{3}[\-]\d{4}">
+					placeholder="###-###-####" pattern="\d{3}[\-]\d{3}[\-]\d{4}" required>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -14,7 +14,7 @@
 			<div class="col-xs=10">
 				<input type="email" name="email" id="email"
 					class="form-control" ng-model="$deliveryInformationCtrl.contactInfo.email"
-					placeholder="Enter Email">
+					placeholder="Enter Email" required>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -22,7 +22,7 @@
 			<div class="col-xs=10">
 				<input type="text" name="street" id="street"
 					class="form-control" ng-model="$deliveryInformationCtrl.contactInfo.street"
-					placeholder="Enter Address">
+					placeholder="Enter Address" required>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -30,7 +30,7 @@
 			<div class="col-xs=10">
 				<input type="text" class="form-control" name="city"
 					id="city" ng-model="$deliveryInformationCtrl.contactInfo.city"
-					placeholder="Enter City">
+					placeholder="Enter City" required>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -38,7 +38,7 @@
 			<div class="col-xs=10">
 				<input type="text" class="form-control" name="state"
 					id="state" ng-model="$deliveryInformationCtrl.contactInfo.state"
-					placeholder="Enter state">
+					placeholder="Enter state" required>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -46,7 +46,7 @@
 			<div class="col-xs=10">
 				<input type="text" class="form-control" name="zip"
 					id="zip" ng-model="$deliveryInformationCtrl.contactInfo.zip"
-					placeholder="Enter Zip Code" pattern="(\d{5}([\-]\d{4})?)">
+					placeholder="Enter Zip Code" pattern="(\d{5}([\-]\d{4})?)" required>
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary"

@@ -1,29 +1,26 @@
 'use strict';
 
 (() => {
-	angular.module('awesome-app.deliveryInformation')
-		.service('deliveryInformationService', deliveryInformationService)
+	angular.module('awesome-app.di')
+		.service('diService', diService);
 		
-		deliveryInformationService.$inject = [ '$http', '$state']
+		diService.$inject = [ '$http', '$state'];
 	
-		function deliveryInformationService($http, $state) {
-			function createContactInfo() {
-				this.info = {};
+		function diService($http, $state) {
+			this.createContactInfo = contactInfo =>  {
 					$http
-						.post('/addContactInfo', contactInfo)
+						.post('addContactInfo', contactInfo)
 						.then(response => response.data)
 						.then(contactInfo => {
-							console.log(contactInfo);
-							this.info = contactInfo;
-						})
-						
-					if(info == null){
-						return $state.go('');
-					}else {
-						return $state.go('');
-					}
-				
+							if(contactInfo == null){
+								$state.go('createDeliveryInformationFailure');
+								}else {
+									$state.go('createDeliveryInformationSuccess');
+								}
+						});
+		
 			}
+			
 		
 		}
 })();

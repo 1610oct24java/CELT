@@ -1,5 +1,5 @@
 'use strict';
 
 (()=>{
-	angular.module('awesome-app.deliveryInformation', []);
+	angular.module('awesome-app.di', []);
 })();

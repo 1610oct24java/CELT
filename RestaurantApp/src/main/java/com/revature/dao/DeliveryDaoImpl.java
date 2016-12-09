@@ -15,9 +15,9 @@ import com.revature.util.HibernateUtil;
 public class DeliveryDaoImpl implements DeliveryDao {
 
 	private Session session;
+	
 	@Override
-	@RequestMapping(value = "/addContactInfo", method = RequestMethod.POST)
-	public @ResponseBody ContactInfo saveContactInfo(@RequestBody ContactInfo ci) {
+	public ContactInfo saveContactInfo(ContactInfo ci) {
 		session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
 		System.out.println(ci.toString());

@@ -1,14 +1,29 @@
 'use strict';
 
 (()=>{
-	angular.module('awesome-app.deliveryInformation')
-		.constant('deliveryInformationRoutes', {	
-			deliveryAddress : {
-				url : '/createDeliveryInformation',
-				templateUrl : '/RestaurantApp/resources/deliveryInformation.template.html',
-				controller : 'deliveryInformationController',
-				controllerAs : '$deliveryInformationCtrl'
+	angular.module('awesome-app.di')
+		.constant('diRoutes', {	
+			createDeliveryInformation : {
+				url: '/createDeliveryInformation',
+				templateUrl: '/RestaurantApp/resources/deliveryInformation/deliveryInformation.template.html',
+				controller: 'diController',
+				controllerAs: '$deliveryInformationCtrl'
+			},
+			
+			createDeliveryInformationSuccess : {
+				url: '/createDeliveryInformationSuccess',
+				templateUrl: '/RestaurantApp/resources/deliveryInformation/deliveryInformation.template.html',
+				controller: 'diController',
+				controllerAs: '$deliveryInformationCtrl'
+			},
+			
+			createDeliveryInformationFailure : {
+				url: '/createDeliveryInformationFailure',
+				templateUrl: '/RestaurantApp/resources/deliveryInformation/deliveryInformation.template.html',
+				controller: 'diController',
+				controllerAs: '$deliveryInformationCtrl'
 			}
+			
 		});
 	
 })();

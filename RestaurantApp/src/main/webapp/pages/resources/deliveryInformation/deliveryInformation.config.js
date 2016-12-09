@@ -1,16 +1,16 @@
 'use strict';
 
-(()=> {
-	angular.module('awesome-app.deliveryInformation')
-		.config(config)
+(()=>{
+	angular.module('awesome-app.di')
+		.config(configuration)
 		
-		config.$inject = ['deliveryInformationRoutes', '$stateProvider'];
+		configuration.$inject = ['diRoutes', '$stateProvider']
 	
-		function config(deliveryInformationRoutes, $stateProvider) {
-			Object.key(deliveryInformationRoutes)
-				.foreach(key => {
+		function configuration(diRoutes, $stateProvider) {
+			Object.keys(diRoutes)
+				.forEach(key => {
 					$stateProvider
-						.state(key, deliveryInformationRoutes[key])
-				})
+						.state(key, diRoutes[key])
+				});
 		}
 })();
