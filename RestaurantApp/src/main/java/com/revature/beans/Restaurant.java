@@ -37,8 +37,9 @@ public class Restaurant implements Serializable{
 	@OneToOne
 	@JoinColumn(name="CI_ID")
 	private ContactInfo address;
-	
-	
+	@Column(name="R_STATUS")
+	private String status;
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -48,6 +49,7 @@ public class Restaurant implements Serializable{
 		result = prime * result + ((menu == null) ? 0 : menu.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((reviews == null) ? 0 : reviews.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -83,6 +85,11 @@ public class Restaurant implements Serializable{
 				return false;
 		} else if (!reviews.equals(other.reviews))
 			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
 		return true;
 	}
 
@@ -90,7 +97,7 @@ public class Restaurant implements Serializable{
 	@Override
 	public String toString() {
 		return "Restaurant [id=" + id + ", name=" + name + ", menu=" + menu + ", reviews=" + reviews + ", address="
-				+ address + "]";
+				+ address + ", status=" + status + "]";
 	}
 
 
@@ -142,15 +149,24 @@ public class Restaurant implements Serializable{
 	public void setAddress(ContactInfo address) {
 		this.address = address;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
 
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
-	public Restaurant(int id, String name, List<FoodItem> menu, List<Review> reviews, ContactInfo address) {
+	public Restaurant(int id, String name, List<FoodItem> menu, List<Review> reviews, ContactInfo address,
+			String status) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.menu = menu;
 		this.reviews = reviews;
 		this.address = address;
+		this.status = status;
 	}
 
 

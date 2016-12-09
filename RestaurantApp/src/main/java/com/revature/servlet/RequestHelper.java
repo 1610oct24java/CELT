@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.revature.beans.Customer;
 import com.revature.beans.Manager;
 import com.revature.beans.User;
+import com.revature.dao.RestaurantDAO;
+import com.revature.dao.RestaurantDAOImp;
 import com.revature.dao.UserDAO;
 import com.revature.dao.UserDAOImp;
 
@@ -14,6 +16,7 @@ public class RequestHelper {
 	public String process(HttpServletRequest request, HttpServletResponse response){
 		String direct = "index.html";
 		UserDAO userDAO = new UserDAOImp();
+		RestaurantDAO restaurantDAO = new RestaurantDAOImp();
 		Manager manager = null;
 		Customer customer = null;
 		
@@ -37,6 +40,9 @@ public class RequestHelper {
 			break;
 		case "/RestaurantApp/logout.do":
 			request.getSession().invalidate();
+			break;
+		case "/RestaurantApp/status.do":
+			restaurantDAO.changeStatus(50);
 			break;
 		}
 		return direct;
