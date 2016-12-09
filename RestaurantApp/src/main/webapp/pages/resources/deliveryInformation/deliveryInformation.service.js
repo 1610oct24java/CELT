@@ -14,7 +14,7 @@
 						.then(contactInfo => {
 							if(contactInfo == null){
 								$state.go('createDeliveryInformationFailure');
-								}else {
+								} else {
 									$state.go('createDeliveryInformationSuccess');
 								}
 						});

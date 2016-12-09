@@ -15,7 +15,7 @@
       },
       
       createCustomerSuccess: {
-    	  url: '/WINNER_WINNER_BIG_CHICKEN_DINNER/',
+    	  url: '/WINNER_WINNER_CHICKEN_NUGGET_DINNER/',
     	  templateUrl:'/RestaurantApp/resources/createCustomer/createCustomerSuccess.template.html',
     	  controller: 'CreateCustomerController',
     	  controllerAs: '$createCustomer'
