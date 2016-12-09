@@ -11,7 +11,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
   @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry.addResourceHandler("/**").addResourceLocations("/WEB-INF/pages/").setCachePeriod(31556926);
+    registry.addResourceHandler("/**").addResourceLocations("/WEB-INF/pages/**").setCachePeriod(31556926);
   }
 
 }

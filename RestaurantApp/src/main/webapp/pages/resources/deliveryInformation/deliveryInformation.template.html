@@ -1,0 +1,57 @@
+
+<div class="container">
+	<form role="form" class="form-horizontal" method="POST">
+		<div class="form-group row">
+			<label for="phone" class="col-xs-2 control-label">Phone Number:</label>
+			<div class="col-xs=10">
+				<input type="tel" name="phone" id="phone"
+					class="form-control" ng-model="$deliveryInformationCtrl.contactInfo.phone"
+					placeholder="###-###-####" pattern="\d{3}[\-]\d{3}[\-]\d{4}" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="email" class="col-xs-2 control-label">Email:</label>
+			<div class="col-xs=10">
+				<input type="email" name="email" id="email"
+					class="form-control" ng-model="$deliveryInformationCtrl.contactInfo.email"
+					placeholder="Enter Email" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="street" class="col-xs-2 control-label">Street:</label>
+			<div class="col-xs=10">
+				<input type="text" name="street" id="street"
+					class="form-control" ng-model="$deliveryInformationCtrl.contactInfo.street"
+					placeholder="Enter Address" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="city" class="col-xs-2 control-label">City:</label>
+			<div class="col-xs=10">
+				<input type="text" class="form-control" name="city"
+					id="city" ng-model="$deliveryInformationCtrl.contactInfo.city"
+					placeholder="Enter City" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="state" class="col-xs-2 control-label">State:</label>
+			<div class="col-xs=10">
+				<input type="text" class="form-control" name="state"
+					id="state" ng-model="$deliveryInformationCtrl.contactInfo.state"
+					placeholder="Enter state" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="zip" class="col-xs-2 control-label">state:</label>
+			<div class="col-xs=10">
+				<input type="text" class="form-control" name="zip"
+					id="zip" ng-model="$deliveryInformationCtrl.contactInfo.zip"
+					placeholder="Enter Zip Code" pattern="(\d{5}([\-]\d{4})?)" required>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary"
+			ng-click="$deliveryInformationCtrl.create()">Sign Up</button>
+	</form>
+</div>
+
+</div>

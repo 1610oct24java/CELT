@@ -2,28 +2,27 @@
 (() => {  
 	angular.module('awesome-app.createCustomer')
     .constant('createCustomerRoutes', {
-    	//from my understanding this is called from the ui-sref
       createCustomer : {
         url: '/createCustomer',
-        templateUrl: '/RestaurantApp/pages/createCustomer.template.html',
+        templateUrl: '/RestaurantApp/resources/createCustomer/createCustomer.template.html',
         controller: 'CreateCustomerController',
         controllerAs: '$createCustomer'//,
-//blocker need to get with Travis for login stuff
-/*        data: {
+        	//blocker need to get with Travis for login stuff
+        	/*        data: {
           anonymousAllowed: true,
           loggedIn: false
         }*/
       },
       
       createCustomerSuccess: {
-    	  url: '/WINNER_WINNER_BIG_CHICKEN_DINNER/',
-    	  templateUrl:'/RestaurantApp/pages/createCustomerSuccess.template.html',
+    	  url: '/WINNER_WINNER_CHICKEN_NUGGET_DINNER/',
+    	  templateUrl:'/RestaurantApp/resources/createCustomer/createCustomerSuccess.template.html',
     	  controller: 'CreateCustomerController',
     	  controllerAs: '$createCustomer'
       },
       createCustomerFailure: {
     	  url: '/WAT/',
-    	  templateUrl: '/RestaurantApp/pages/createCustomerFailure.template.html',
+    	  templateUrl: '/RestaurantApp/resources/createCustomer/createCustomerFailure.template.html',
     	  controller: 'CreateCustomerController',
     	  controllerAs: '$createCustomer'
       }

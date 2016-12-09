@@ -6,12 +6,15 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.revature.beans.FoodItem;
 import com.revature.beans.Manager;
@@ -44,10 +47,10 @@ public class MenuController {
 			FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
 			
 			new MenuService().addMenuItems(Arrays.asList(menuArray));
-		} catch (org.codehaus.jackson.JsonParseException e) {
+		} catch (JsonParseException e) {
 
 			e.printStackTrace();
-		} catch (org.codehaus.jackson.map.JsonMappingException e) {
+		} catch (JsonMappingException e) {
 
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -65,10 +68,10 @@ public class MenuController {
 			FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
 			
 			new MenuService().deleteMenu(Arrays.asList(menuArray));
-		} catch (org.codehaus.jackson.JsonParseException e) {
+		} catch (JsonParseException e) {
 
 			e.printStackTrace();
-		} catch (org.codehaus.jackson.map.JsonMappingException e) {
+		} catch (JsonMappingException e) {
 
 			e.printStackTrace();
 		} catch (IOException e) {

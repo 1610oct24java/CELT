@@ -8,14 +8,26 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
-</head>
-<body class="container-fluid">
 
+
+<script type="text/javascript"
+	src="https://opensource.keycdn.com/angularjs/1.5.8/angular.min.js"></script>
+</head>
+
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+<!-- Angular Bootstrap Ui Requires the Bootstrap CSS file, jQuery and Bootstrap.js are not needed-->
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.3.0/ui-bootstrap.min.js"></script>
+
+
+ <script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+</head>
+
+<body class="container-fluid">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
-		
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -24,7 +36,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"> 
+				<a class="navbar-brand" href="index.html"> </a>
 			</div>
 
 			<div class="collapse navbar-collapse"
@@ -33,33 +45,38 @@
 					<li><a ui-sref="createCustomer">Sign Up</a></li>
 				</ul>
 				<form class="navbar-form navbar-left">
-					<div class="form-group">
-					</div>
-					</form>
+					<div class="form-group"></div>
+				</form>
 				<ul class="nav navbar-nav navbar-right">
-					
 				</ul>
 			</div>
-			
 		</div>
-		
 	</nav>
 	<div ng-cloak>
-		<div ui-view>
-		</div>
+		<div ui-view></div>
 	</div>
-	<script type="text/javascript"
-		src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
-	<!-- Angular Bootstrap Ui Requires the Bootstrap CSS file, jQuery and Bootstrap.js are not needed-->
-	<script type="text/javascript"
-		src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.3.0/ui-bootstrap.min.js"></script>
-	<script src="pages/resources/js/app.module.js"></script>
-	<script src="pages/resources/js/app.config.js"></script>
-	<script src="pages/resources/js/app.run.js"></script>
-	<script src="pages/resources/js/createCustomer/createCustomer.module.js"></script>
-	<script src="pages/resources/js/createCustomer/createCustomer.controller.js"></script>
-	<script src="pages/resources/js/createCustomer/createCustomer.service.js"></script>
-	<script src="pages/resources/js/createCustomer/createCustomer.routes.js"></script>
-	<script src="pages/resources/js/createCustomer/createCustomer.config.js"></script>
+
+	<!-- Temporary placeholder until the reset gets added -->
+	<a ui-sref="createDeliveryInformation">Add Delivery Address</a>
+	<script src="resources/baseApp/app.module.js"></script>
+	<script src="resources/baseApp/app.config.js"></script>
+	<script src="resources/baseApp/app.run.js"></script>
+
+	<script
+		src="resources/deliveryInformation/deliveryInformation.module.js"></script>
+	<script
+		src="resources/deliveryInformation/deliveryInformation.controller.js"></script>
+	<script
+		src="resources/deliveryInformation/deliveryInformation.routes.js"></script>
+	<script
+		src="resources/deliveryInformation/deliveryInformation.service.js"></script>
+	<script
+		src="resources/deliveryInformation/deliveryInformation.config.js"></script>
+	<script src="resources/createCustomer/createCustomer.module.js"></script>
+	<script src="resources/createCustomer/createCustomer.controller.js"></script>
+	<script src="resources/createCustomer/createCustomer.routes.js"></script>
+	<script src="resources/createCustomer/createCustomer.service.js"></script>
+	<script src="resources/createCustomer/createCustomer.config.js"></script>
+
 </body>
 </html>
