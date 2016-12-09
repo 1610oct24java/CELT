@@ -19,22 +19,17 @@ public class UserDAOImp implements UserDAO {
 		Session session = HibernateUtil.getSession();
 		Query query;
 		String hql;
-		Transaction tx;
-		User returnUser = null;
+		Object returnUser = null;
 
 		hql = "FROM User WHERE username = :u_name";
 		query = session.createQuery(hql);
 		query.setParameter("u_name", username);
-		List users = query.list();
-		System.out.println(users.toString());
-		for (Object user : users) {
-			returnUser = (User) user;
-		}
+		returnUser = query.uniqueResult();
 		if (returnUser != null) {
 			// username was found
-			if (returnUser.checkPassword(password)) {
+			if (((User) returnUser).checkPassword(password)) {
 				// login is correct
-				return returnUser;
+				return (User) returnUser;
 				
 			} else {
 				// password is incorrect
@@ -51,17 +46,17 @@ public class UserDAOImp implements UserDAO {
 		Session session = HibernateUtil.getSession();
 		Query query;
 		String hql;
-		Transaction tx;
-		Manager returnManager = null;
+		Object returnManager = null;
 
 		hql = "FROM Manager AS M WHERE M.userId = :accountID";
 		query = session.createQuery(hql);
 		query.setParameter("accountID", id);
-		List managers = query.list();
-		for (Object manager : managers) {
-			returnManager = (Manager) manager;
+		returnManager = query.uniqueResult();
+		if (returnManager != null){
+			return (Manager) returnManager;
+			
 		}
-		return returnManager;
+		return null;
 	}
 
 	@Override
@@ -70,15 +65,17 @@ public class UserDAOImp implements UserDAO {
 		Query query;
 		String hql;
 		Transaction tx;
-		Customer returnCustomer = null;
+		Object returnCustomer = null;
 
 		hql = "FROM Customer AS C WHERE C.userId = :accountID";
 		query = session.createQuery(hql);
 		query.setParameter("accountID", id);
-		List customers = query.list();
-		for (Object customer : customers) {
-			returnCustomer = (Customer) customer;
+		returnCustomer = query.uniqueResult();
+		if (returnCustomer != null){
+			return (Customer) returnCustomer;
+					
 		}
-		return returnCustomer;
+		
+		return null;
 	}
 }
