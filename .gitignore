@@ -1,3 +1,4 @@
+/RestaurantApp/src/main/webapp/WEB-INF/lib/ojdbc7.jar
 /target/
 .metadata
 .settings
@@ -6,3 +7,4 @@
 .recommenders
 /RemoteSystemsTempFiles/
 .classpath
+/External Files/
