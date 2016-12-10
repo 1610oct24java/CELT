@@ -21,8 +21,6 @@ import com.revature.controllers.DeliveryInfoController;
 @ContextConfiguration(classes = AppConfig.class, loader = AnnotationConfigContextLoader.class)
 public class DeliveryInformationControllerTest {
 
-
-	
 	@Autowired
 	private DeliveryInfoController diController;
 	
