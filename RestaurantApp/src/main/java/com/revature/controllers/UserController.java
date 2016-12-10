@@ -18,7 +18,7 @@ public class UserController {
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String getIndex(){
-		return "redirect:index.html";
+		return "redirect:pages/index.html";
 		
 	}
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.revature.beans.ContactInfo;
 import com.revature.dao.DeliveryDao;
 
-@Controller
+@Controller("diController")
 public class DeliveryInfoController {
 
 	@Autowired
