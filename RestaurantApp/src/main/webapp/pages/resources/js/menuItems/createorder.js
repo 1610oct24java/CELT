@@ -1,5 +1,5 @@
 var app = angular.module('myApp',[]);
-app.controller('testCtrl', ['$scope', function($scope){
+app.controller('orderCtrl', ['$scope', function($scope){
 	$scope.showTheBox = true;
 	$scope.processForm = function() {
 		$scope.showTheBox = !$scope.showTheBox;
@@ -18,4 +18,3 @@ app.controller('testCtrl', ['$scope', function($scope){
 		$scope.order.total += $scope.orderItem.price;
 	};
 }]);
-
