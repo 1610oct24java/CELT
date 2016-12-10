@@ -51,6 +51,14 @@
 			<input type="number" ng-model="p6" ng-init="p6=1.5" value="1.5" readonly />
 			<span ng-model="s6">{{m6*p6}}</span>
 		</div>
+		<ul>	
+			<li ng-repeat class="orderItem">
+			<p >{{controller.JSObj.price | currency}} {{controller.name}}</p>
+			<input type="number" min="0" max="20" ng-show="showTheBox" ng-model="controller.qty" placeholder="enter quantity"/>
+			<p><span ng-bind="controller.qty"></span> 
+			<span ng-model="totalItem{{controller.id}}">{{controller.qty*controller.price}}</span></p>
+			</li>	
+		</ul>
 		<input type="submit" name="submitOrder" value="Submit Order"/>
 		<!-- <input type="reset"/> -->
 		<span>{{s1+s2+s3+s4+s5+s6}}</span>
