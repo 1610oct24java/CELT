@@ -1,4 +1,4 @@
-package com.revature.controllerTest;
+package com.revature.controllerTests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -15,6 +15,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.revature.beans.ContactInfo;
 import com.revature.controllers.DeliveryInfoController;
+import com.revature.testconfiguration.AppConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //Reference https://examples.javacodegeeks.com/core-java/junit/spring-junit-test-example/
