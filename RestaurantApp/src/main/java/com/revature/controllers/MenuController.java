@@ -48,7 +48,7 @@ public class MenuController {
 			return restaurant;
 		case "stars":
 			log.debug("stars = " + restaurant.getReviews());
-			return new ReviewService().getRaiting(restaurant.getReviews());
+			return new ReviewService().getRating(restaurant.getReviews());
 		case "menu":
 			log.debug("menu = " + restaurant.getMenu());
 			return restaurant.getMenu();
@@ -59,41 +59,20 @@ public class MenuController {
 	
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.POST)
-	public String addItemsToMenu(@RequestBody String JsonMenu){
+	public void addItemsToMenu(@RequestBody String JsonMenu) throws IOException {
 		ObjectMapper om = new ObjectMapper();
 		System.out.println(JsonMenu);
-		
 
-		try {
-			FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
+		FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
 
-			new MenuService().addMenuItems(Arrays.asList(menuArray));
-		} catch (IOException e) {
-			e.printStackTrace();
-			return "failure";
-		}
-		
-		return "success";
+		new MenuService().addMenuItems(Arrays.asList(menuArray));
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE)
-	public void deleteMenu(@RequestBody String JsonMenu){
+	public void deleteMenu(@RequestBody String JsonMenu) throws IOException {
 		ObjectMapper om = new ObjectMapper();
 		
-		FoodItem[] menuArray;
-		try {
-			menuArray = om.readValue(JsonMenu, FoodItem[].class);
-
-			new MenuService().deleteMenu(Arrays.asList(menuArray));
-		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
+		new MenuService().deleteMenu(Arrays.asList(menuArray));
 	}
 }

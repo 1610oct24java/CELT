@@ -6,7 +6,7 @@ import com.revature.beans.Restaurant;
 import com.revature.beans.Review;
 
 public class ReviewService {
-	public float getRaiting(List<Review> reviews){
+	public float getRating(List<Review> reviews){
 		if(reviews.size() == 0)
 			return 0;
 		
@@ -20,6 +20,6 @@ public class ReviewService {
 	}
 	
 	public float getRaiting(Restaurant restaurant){
-		return getRaiting(restaurant.getReviews());
+		return getRating(restaurant.getReviews());
 	}
 }

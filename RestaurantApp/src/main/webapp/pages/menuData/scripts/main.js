@@ -14,7 +14,7 @@ app.controller('restaurantController',
         	console.log(data);
         	$scope.restaurant = data;
         	menuFactory.getStars().success(function (data){
-        		$scope.restaurant.raiting = data;
+        		$scope.restaurant.rating = data;
     			if(data)
     				$scope.hideComments = "";
         	});
