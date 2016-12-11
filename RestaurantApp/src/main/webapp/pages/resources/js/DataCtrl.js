@@ -1,28 +1,27 @@
 var app = angular.module("myApp",[])
-app.controller('registerRestaurantCtrl', function registerRestaurantCtrl($scope){
+app.controller('registerRestaurantCtrl',['$scope','ResFactory', function registerRestaurantCtrl($scope,ResFactory){
 	$scope.saveData = function(){
 		var info = {
 				street: $scope.street,
 				city:$scope.city,
-				State:$scope.state,
-				Zipcode:$scope.zipcode,
-				Phone: $scope.cel,
-				Email:$scope.email
+				state:$scope.state,
+				zip:$scope.zip,
+				phone: $scope.phone,
+				email:$scope.email
 					
 		}
-		var restaurant = {
+		 var rest = {
 				name:$scope.resname
 					
 		}
-		var manager = {
+		 var man = {
 				username: $scope.uname,
 				password: $scope.pword
 		}
-		console.log("hello.")
-		ResFactory.postData(info,restaurant,manager);
+		console.log("hello.inside saveData")
+		ResFactory.postData(info,rest,man);
 	};
-});
-
+}]);
 app.factory('ResFactory', ['$http',
     function($http){
 	var ResFactory = {},
@@ -30,6 +29,7 @@ app.factory('ResFactory', ['$http',
 	
 	ResFactory.postData = function(info,res,man)
 	{
+		console.log("hello.inside postData")
 		var Data = {
 				"info":angular.toJson(info), 
 				"restaurant":angular.toJson(res), 

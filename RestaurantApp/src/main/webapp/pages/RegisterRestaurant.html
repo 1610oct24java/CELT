@@ -9,30 +9,30 @@
 <body ng-controller="registerRestaurantCtrl">
 <h1>Register Restaurant!</h1>
 <h2>Restaurant Information!</h2>
-<form>
+
 	<label>Restaurant name:</label><br>
 	<input ng-model="resname"type="text" name="Restaurant" required/><br>
  
 	<label>Manager Username:</label><br>
-	<input  type="text" name="Manager Username" required/><br>
+	<input ng-model="uname" type="text" name="Manager Username" required/><br>
 	<label>Manager Password:</label><br>
 	<input ng-model="pword" type="password" name="psw" required/><br>
 	<label>Restaurant Email:</label><br>
 	<input ng-model="email" type="email" name="email" required/><br>
 	<label>Restaurant Phone Number:</label><br>
-	<input ng-model="cel"type="tel" name="usrtel" required/><br>
+	<input ng-model="phone"type="tel" name="phone" required/><br>
 
 	<label>Restaurant Location:</label><br>
 	<label>Street:</label>
-	<input ng-model="street" type="text" name="Street" required/><br>
+	<input ng-model="street" type="text" name="street" required/><br>
 	<label>City:</label>
-	<input ng-model="city" type="text" name="City" required/><br>
+	<input ng-model="city" type="text" name="city" required/><br>
 	<label>State:</label>
-	<input ng-model="state" type="text" name="State" required/><br>
+	<input ng-model="state" type="text" name="state" required/><br>
 	<label >Zipcode:</label>
-	<input ng-model="zipcode"type ="number" name ="zip" required/><br>
-	<button ng-submit="saveData()" class="button" name = "CreateAccount">Create Account</button>
-</form>
+	<input ng-model="zip"type ="number" name ="zip" required/><br>
+	<button ng-click="saveData()" class="button" name ="CreateAccount">Create Account</button>
+
 <script type="text/javascript" src="pages/resources/js/DataCtrl.js"></script>
 </body>
 </html>

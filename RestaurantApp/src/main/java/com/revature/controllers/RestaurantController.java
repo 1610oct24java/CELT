@@ -2,17 +2,20 @@ package com.revature.controllers;
 
 import java.io.IOException;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.revature.beans.ContactInfo;
 import com.revature.beans.Manager;
 import com.revature.beans.Restaurant;
-//import com.revature.dao.RestaurantDAOImpl;
+import com.revature.beans.User;
+import com.revature.dao.RestaurantDAOImpl;
 
 @Controller 
 public class RestaurantController 
@@ -25,24 +28,28 @@ public class RestaurantController
 	}
 	
 	@RequestMapping(value = "/restaurant", method=RequestMethod.POST)
-	public void saveData(ModelMap modelMap) throws JsonParseException, JsonMappingException, IOException
+	public String saveData(@RequestBody String JsonData) throws JsonParseException, JsonMappingException, IOException
 	{
 		System.out.println("inside post method");
 		ObjectMapper om = new ObjectMapper();
-		String info,res,man;
-		info = (String) modelMap.get("info");
-		res = (String) modelMap.get("restaurant");
-		man = (String) modelMap.get("manager");
+		JsonParser parser = new JsonParser(); 
+		JsonObject obj = parser.parse(JsonData).getAsJsonObject(); 
 		
-		ContactInfo contacInfo = om.readValue(info,ContactInfo.class);
-		Restaurant restaurant = om.readValue(res, Restaurant.class);
-		Manager manager = om.readValue(man, Manager.class);
+		String info = obj.get("info").getAsString();
+		String res = obj.get("restaurant").getAsString();
+		String man = obj.get("manager").getAsString();
+		System.out.println(info);
+		System.out.println(res);
+		System.out.println("manager info:"+man);
+		//ContactInfo contacInfo = om.readValue(info,ContactInfo.class);
+		//Restaurant restaurant = om.readValue(res, Restaurant.class);
+		//Manager manager = (Manager)om.readValue(man, User.class);
+		
+		//System.out.println("man:"+manager);
 		//RestaurantDAOImpl dao = new RestaurantDAOImpl();
 		
-		System.out.println("This is the info: "+contacInfo);
-		System.out.println("This is the res: "+restaurant);
-		System.out.println("This is the manager: "+manager);
-		
 		//dao.saveRestaurant(contacInfo, restaurant, manager);	
+    	
+    	return "redirect:pages/RegisterRestaurant.html";
 	}
 }
