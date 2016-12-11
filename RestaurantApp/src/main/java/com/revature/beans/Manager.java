@@ -1,5 +1,6 @@
 package com.revature.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -7,15 +8,15 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Scope;
 @Entity
+@Scope(value="session")
 @Table(name="MANAGERS")
 @PrimaryKeyJoinColumn(name="M_ID")
 public class Manager extends User {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4202380130122285344L;
-	@OneToOne(fetch=FetchType.EAGER)
+
+	private static final long serialVersionUID = -6986873649101967847L;
+	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn(name="R_ID")
 	private Restaurant restaurant;
 
@@ -31,7 +32,6 @@ public class Manager extends User {
 		result = prime * result + ((restaurant == null) ? 0 : restaurant.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -61,9 +61,8 @@ public class Manager extends User {
 		super();
 	}
 
-	public Manager(int userId, String password, String salt, Restaurant restaurant) {
-		super(userId, password, salt);
+	public Manager(int userId,String username, String password, String salt, Restaurant restaurant) {
+		super(userId,username, password, salt);
 		this.restaurant = restaurant;
-	}
-	
+	}	
 }
