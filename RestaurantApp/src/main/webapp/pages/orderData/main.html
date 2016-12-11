@@ -19,18 +19,29 @@
 	<div class=restaurantSelect ng-show="{{ stage === 1 }}">
 		<h2>Restaurant List</h2>
 		<div ng-repeat="restaurant in restaurantList">
-			<span>{{ restaurant.name }}</span>:
+			<span ng-click="selectRestaurant(restaurant)">{{ restaurant.name }}</span>:
 			<span> {{ getStars(restaurant.reviews) }}/5 Stars</span>
 		</div>
 	</div>
 	<!-- View + Select items from menu -->
-	<div class=menuSelect ng-show="{{ stage === 2 }}">
+	<div class=menuSelect ng-show="{{ stage === 1 }}">
+		<h2> {{ restaurant.name }} </h2>
+		<div ng-repeat="item in restaurant.menu">
+			<button ng-click="addToOrder(item)">Add to Order</button><span> {{ item.price | currency }} {{ item.name }} - {{ item.description }} </span>
+		</div><br>
 	</div>
 	<!-- View Order -->
-	<div class=orderView ng-show="{{ stage === 3 }}">
+	<div class=orderView ng-show="{{ stage === 1 }}">
+		<h3>Current Order</h3>
+		<div ng-repeat="item in order">
+			<button ng-click="removeFromOrder(item)">Remove from Order</button><span> {{ item.quantity }} {{ item.price | currency }} {{ item.name }} - {{ item.description }} </span>
+		</div><br>
+		</div>
+		<h4>Your total is: {{ getTotal() | currency }}</h4>
+		
 	</div>
 	<!-- Submit -->
-	<div class=submission ng-show="{{ stage === 4 }}">
+	<div class=submission ng-show="{{ stage === 1 }}">
 	</div>
 </div>
 </body>
