@@ -8,7 +8,8 @@
 
 	<dependencyManagement>
 		<dependencies>
-		<!-- http://platform.spring.io/platform/  (4.3.4 Release) <version>Athens-SR1</version> discuss with group -->
+			<!-- http://platform.spring.io/platform/ (4.3.4 Release) <version>Athens-SR1</version> 
+				discuss with group -->
 			<dependency>
 				<groupId>io.spring.platform</groupId>
 				<artifactId>platform-bom</artifactId>
@@ -83,6 +84,12 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-catalina</artifactId>
+			<version>7.0.72</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
