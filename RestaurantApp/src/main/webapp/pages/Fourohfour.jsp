@@ -10,7 +10,7 @@
 	<img src="pages/resources/images/four.jpg" alt="You goofed">
 	<div>
 		<p>You are trying to access a non-existing page</p>
-		<a href="http://www.google.com">home</a>
+		<a href="pages/index.html">home</a>
 	</div>
 </body>
 </html>
