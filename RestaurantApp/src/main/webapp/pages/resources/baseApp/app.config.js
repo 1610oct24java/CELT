@@ -9,6 +9,6 @@
 
   function config($locationProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
-  //  $urlRouterProvider.otherwise(logi);
+    $urlRouterProvider.otherwise('/home');
   }
 })();
