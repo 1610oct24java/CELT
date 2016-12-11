@@ -18,7 +18,6 @@ app.controller('registerRestaurantCtrl',['$scope','ResFactory', function registe
 				username: $scope.uname,
 				password: $scope.pword
 		}
-		console.log("hello.inside saveData")
 		ResFactory.postData(info,rest,man);
 	};
 }]);
@@ -29,12 +28,10 @@ app.factory('ResFactory', ['$http',
 	
 	ResFactory.postData = function(info,res,man)
 	{
-		console.log("hello.inside postData")
 		var Data = {
 				"info":angular.toJson(info), 
 				"restaurant":angular.toJson(res), 
 				"manager":angular.toJson(man)	
-				
 		}
 		return $http.post(url, Data);
 	}

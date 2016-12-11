@@ -21,27 +21,22 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	{
 		Session session = hu.getSession();
 		Transaction tx = session.beginTransaction();
-		
-		//session.save(res); cascadetype.All will save the restaurant corresponding to this manager
 		res.setAddress(info);
 		man.setRestaurant(res);
 		session.save(man);
 		
 		tx.commit();
 		session.close();	
-		
 	}
 
 	@Override
 	public void updateRestaurant(Restaurant res) {
-		
 		
 	}
 
 	@Override
 	public void deleteRestaurant(Restaurant res) {
 	
-		
 	}
 
 }
