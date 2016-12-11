@@ -16,6 +16,7 @@ public class UserDAOImp implements UserDAO {
 
 	@Override
 	public User checkLogin(String username, String password) {
+		System.out.println("In checkLogin: " + username + " " + password);
 		Session session = HibernateUtil.getSession();
 		Query query;
 		String hql;

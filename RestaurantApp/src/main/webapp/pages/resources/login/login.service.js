@@ -6,19 +6,22 @@
 	loginService.$inject = ['$http', '$state'];
 	
 	function loginService($http, $state) {
-		this.dologin =(user)=> {
-			this.dest = "";
+		this.dologin = user => {
+			console.log(user);
 			$http.post('login', user)
 			.then(response => response.data)
 			.then(destination => {
-				dest = destination;
+				console.log(destination);
+				if(destination =="manager") {
+					$state.go('managerRoute');
+				}else if(destination == "customer") {
+					$state.go('customerRoute');
+				} else {
+					$state.go('login');
+				}
 			});
 			
-			if(dest =="manager") {
-				$state.go('managerRoute');
-			}else {
-				$state.go('customerRoute');
-			}
+			
 		}
 		
 		
