@@ -13,7 +13,7 @@
         .forEach(key => {
           $stateProvider
             .state(key, createCustomerRoutes[key]);  //accesses each state object given the key and the object
-        })
+        });
     }
 
 })();
