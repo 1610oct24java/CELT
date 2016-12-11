@@ -31,6 +31,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a ui-sref="createCustomer">Sign Up</a></li>
+					<li><a ui-sref="login">Log In</a></li>
 				</ul>
 				<form class="navbar-form navbar-left">
 					<div class="form-group">
@@ -53,13 +54,23 @@
 	<!-- Angular Bootstrap Ui Requires the Bootstrap CSS file, jQuery and Bootstrap.js are not needed-->
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.3.0/ui-bootstrap.min.js"></script>
-	<script src="pages/resources/js/app.module.js"></script>
-	<script src="pages/resources/js/app.config.js"></script>
-	<script src="pages/resources/js/app.run.js"></script>
-	<script src="pages/resources/js/createCustomer/createCustomer.module.js"></script>
+
+	<!--  <script src="pages/resources/js/createCustomer/createCustomer.module.js"></script>
 	<script src="pages/resources/js/createCustomer/createCustomer.controller.js"></script>
 	<script src="pages/resources/js/createCustomer/createCustomer.service.js"></script>
 	<script src="pages/resources/js/createCustomer/createCustomer.routes.js"></script>
-	<script src="pages/resources/js/createCustomer/createCustomer.config.js"></script>
+	<script src="pages/resources/js/createCustomer/createCustomer.config.js"></script> -->
+	
+	<script src="pages/resources/login/login.module.js"></script>
+	<script src="pages/resources/login/login.controller.js"></script>
+	<script src="pages/resources/login/login.service.js"></script>
+  	<script src="pages/resources/login/login.routes.js"></script>
+	<script src="pages/resources/login/login.config.js"></script> 
+	
+	
+	<script src="pages/resources/js/app.module.js"></script>
+	<script src="pages/resources/js/app.config.js"></script>
+	<script src="pages/resources/js/app.run.js"></script>
+	
 </body>
 </html>

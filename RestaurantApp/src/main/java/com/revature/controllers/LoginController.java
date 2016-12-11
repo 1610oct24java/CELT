@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -18,7 +19,7 @@ import com.revature.dao.UserDAOImp;
 @RequestMapping(value = "/login")
 public class LoginController {
 	@RequestMapping(method=RequestMethod.POST)
-	public String doLogin(HttpServletRequest request){
+	public String doLogin(HttpServletRequest request, @RequestBody Object obj){
 		String direct = "login.html";
 		UserDAO userDAO = new UserDAOImp();
 		Manager manager = null;
@@ -30,16 +31,16 @@ public class LoginController {
 			if (manager != null){
 				// user is a manager
 				request.getSession().setAttribute("user", manager);
-				direct = "pages/restaurant.html";
+				direct = "manager";
 			}
 			else{
 				// user is a customer
 				customer = userDAO.getCustomerByID(user.getUserId());
 				request.getSession().setAttribute("user", customer);
-				direct = "pages/customer.html";
+				direct = "customer";
 			}
 		}
-		return "redirect:" + direct;
+		return direct;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
