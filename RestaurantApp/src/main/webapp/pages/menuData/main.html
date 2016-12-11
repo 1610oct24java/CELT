@@ -5,12 +5,16 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 <meta charset="ISO-8859-1">
+    <script src="menuData/scripts/main.js"></script>
+	<script src="menuData/scripts/getMenu.js"></script>
+<link rel=stylesheet href="menuData/stylesheets/main.css">
 </head>
 <body ng-app="restaurantApp">
     <div ng-controller="restaurantController">
         <h1>Welcome Manager!</h1>
+        <!-- display the restaurant's name and menu -->
         <h2>{{ restaurant.name }}</h2>
-        <p> Current rating: {{ restaurant.raiting }} stars</p>
+        <h4> Current raiting: {{ restaurant.raiting }} stars</h4>
         <form ng-submit="addMenuItem()">
             <input type="text" ng-model="newName" size="10" placeholder="Name" required ng-style="inputStyle" style=""/>
             <input type="text" ng-model="newDescription" size="30" placeholder="Description" ng-style="inputStyle" style=""/>
@@ -25,7 +29,8 @@
             <span> {{ food.description }} </span>
         </div>
     	
-		<button ng-click="remove($food)">Remove Selected Items From Menu</button>
+		<!-- ng-click event calls remove() to delete checked items -->
+    	<button ng-click="remove($food)">Remove Selected Items From Menu</button>
 		
 		<div class="deletions" ng-hide="hideDeleted">
 			<div class="deletedItems" ng-repeat="deletedFood in deletedMenu">
@@ -37,12 +42,12 @@
 		<div>
 			<button ng-click="commit()">Commit Changes</button>
 		</div>
+		<div class="viewComments" ng-hide="hideComments">
+			<h3>Comments</h3>
+			<div class="comments" ng-repeat="review in restaurant.reviews">
+				<h4> {{ review.comment }}: {{ review.stars }}/5 </h4>
+			</div>
+		</div>
     </div>
-    
-    <script src="menuData/scripts/main.js"></script>
-    <script src="menuData/scripts/menu.js"></script>
-    <script src="menuData/scripts/editMenu.js"></script>
-	<script src="menuData/scripts/getMenu.js"></script>
-	<link rel=stylesheet href="menuData/stylesheets/main.css"/>
 </body>
 </html>
