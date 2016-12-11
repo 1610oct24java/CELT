@@ -8,14 +8,22 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
 	<error-page>
 		<error-code>404</error-code>
 		<location>/pages/Fourohfour.jsp</location>
 	</error-page>
-		<error-page>
+	
+	<error-page>
 		<error-code>500</error-code>
 		<location>/pages/500.jsp</location>
 	</error-page>
+
+	<error-page>
+		<error-code>401</error-code>
+		<location>/pages/401.jsp</location>
+	</error-page>
+	
 	<servlet>
 		<servlet-name>SpringDispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
