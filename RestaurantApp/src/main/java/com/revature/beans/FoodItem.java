@@ -92,7 +92,7 @@ public class FoodItem implements Serializable {
 	@Override
 	public String toString() {
 		return "FoodItem [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", restaurant=" + restaurant + ", isSpecial=" + isSpecial;
+				 + ", isSpecial=" + isSpecial;
 	}
 	@Override
 	public int hashCode() {

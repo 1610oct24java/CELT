@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+<!-- factory for sending and retrieving data from the server -->
+<script src="pages/orderData/scripts/main.js"></script>
+<script src="pages/menuData/scripts/getMenu.js">
+</script>
+<link rel=stylesheet href="pages/orderData/stylesheets/main.css">
+</head>
+<body ng-app=orderApp>
+<div ng-controller=orderController>
+	<!-- Loading Screen -->
+	<div class=loading ng-show="{{ stage === 0 }}">
+		<p>Loading...</p>
+	</div>
+	<!-- View + Select Restaurant -->
+	<div class=restaurantSelect ng-show="{{ stage === 1 }}">
+		<h2>Restaurant List</h2>
+		<div ng-repeat="restaurant in restaurantList">
+			<span>{{ restaurant.name }}</span>:
+			<span> {{ getStars(restaurant.reviews) }}/5 Stars</span>
+		</div>
+	</div>
+	<!-- View + Select items from menu -->
+	<div class=menuSelect ng-show="{{ stage === 2 }}">
+	</div>
+	<!-- View Order -->
+	<div class=orderView ng-show="{{ stage === 3 }}">
+	</div>
+	<!-- Submit -->
+	<div class=submission ng-show="{{ stage === 4 }}">
+	</div>
+</div>
+</body>
+</html>

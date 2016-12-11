@@ -6,8 +6,13 @@ app.factory('menuFactory', ['$http',
 	function ($http) {
 		'use strict';
 		var menuFactory = {},
-			url = 'viewMyMenu';
-				
+			url = 'viewMyMenu',
+			restaurant = 'viewRestaurantList';
+
+		menuFactory.getRestaurants = function () {
+			return $http.get(restaurant);
+		};
+		
 		menuFactory.getMenu = function () {
 			return $http.get(url);
 		};

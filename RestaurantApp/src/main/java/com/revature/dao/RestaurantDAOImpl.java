@@ -1,5 +1,8 @@
 package com.revature.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -37,6 +40,17 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	@Override
 	public void deleteRestaurant(Restaurant res) {
 	
+	}
+	@Override
+	public List<Restaurant> getRestaurants() {
+		ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
+		Session session = hu.getSession();
+		Transaction tx = session.beginTransaction();
+		
+		restaurants = (ArrayList<Restaurant>) session.createCriteria(Restaurant.class)
+								.list();
+		
+		return restaurants;
 	}
 
 }
