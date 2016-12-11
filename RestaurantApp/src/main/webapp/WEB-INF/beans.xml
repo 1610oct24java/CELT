@@ -16,7 +16,7 @@
 	<context:component-scan base-package="com.revature"/>
 	
 	<!-- Setting up Static resouces -->
-	<mvc:resources mapping="/**" location="/WEB-INF/pages/"/>
+	<mvc:resources mapping="/**" location="/pages"/>
 	
 	<!-- Set up our front controller -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
