@@ -12,10 +12,8 @@
       Object.keys(createCustomerRoutes) // JS built in function
         .forEach(key => {
           $stateProvider
-            .state(key, createCustomerRoutes[key]);  // accesses each state
-														// object given the key
-														// and the object
-        })
+            .state(key, createCustomerRoutes[key]);  //accesses each state object given the key and the object
+        });
     }
 
 })();
