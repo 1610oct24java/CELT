@@ -17,6 +17,7 @@
 	
 	<!-- Setting up Static resources -->
 	<mvc:resources mapping="/**" location="/pages"/>
+
 	<!-- Set up our front controller -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
