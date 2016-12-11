@@ -38,7 +38,6 @@ public class FoodItem implements Serializable {
 	private Restaurant restaurant;
 	@Column(name="MI_SPECIAL")
 	private boolean isSpecial;
-	//private boolean soldOut;
 	
 	public int getId() {
 		return id;
@@ -76,12 +75,7 @@ public class FoodItem implements Serializable {
 	public void setSpecial(boolean isSpecial) {
 		this.isSpecial = isSpecial;
 	}
-//	public boolean isSoldOut() {
-//		return soldOut;
-//	}
-//	public void setSoldOut(boolean soldOut) {
-//		this.soldOut = soldOut;
-//	}
+
 	public FoodItem() {
 		super();
 	}
@@ -94,7 +88,6 @@ public class FoodItem implements Serializable {
 		this.price = price;
 		this.restaurant = restaurant;
 		this.isSpecial = isSpecial;
-//		this.soldOut = soldOut;
 	}
 	@Override
 	public String toString() {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,9 +20,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="RESTAURANT")
 public class Restaurant implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4524158945507038283L;
 	@Id
 	@Column(name="R_ID")
@@ -34,12 +32,11 @@ public class Restaurant implements Serializable{
 	private List<FoodItem> menu = new ArrayList<FoodItem>();
 	@OneToMany(mappedBy="restaurant", fetch=FetchType.EAGER)
 	private List<Review> reviews = new ArrayList<Review>();
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn(name="CI_ID")
 	private ContactInfo address;
-	@Column(name="R_STATUS")
-	private String status;
-
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -49,10 +46,8 @@ public class Restaurant implements Serializable{
 		result = prime * result + ((menu == null) ? 0 : menu.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((reviews == null) ? 0 : reviews.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -85,11 +80,6 @@ public class Restaurant implements Serializable{
 				return false;
 		} else if (!reviews.equals(other.reviews))
 			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
 		return true;
 	}
 
@@ -97,7 +87,7 @@ public class Restaurant implements Serializable{
 	@Override
 	public String toString() {
 		return "Restaurant [id=" + id + ", name=" + name + ", menu=" + menu + ", reviews=" + reviews + ", address="
-				+ address + ", status=" + status + "]";
+				+ address + "]";
 	}
 
 
@@ -149,24 +139,15 @@ public class Restaurant implements Serializable{
 	public void setAddress(ContactInfo address) {
 		this.address = address;
 	}
-	
-	public String getStatus() {
-		return status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
-	public Restaurant(int id, String name, List<FoodItem> menu, List<Review> reviews, ContactInfo address,
-			String status) {
+	public Restaurant(int id, String name, List<FoodItem> menu, List<Review> reviews, ContactInfo address) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.menu = menu;
 		this.reviews = reviews;
 		this.address = address;
-		this.status = status;
 	}
 
 

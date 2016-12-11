@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="awesome-app">
+<head>
+<base href="/RestaurantApp/">
+<meta charset="ISO-8859-1">
+<title>Celt</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+</head>
+<body class="container-fluid">
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+		
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"> 
+			</div>
+
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a ui-sref="createCustomer">Sign Up</a></li>
+				</ul>
+				<form class="navbar-form navbar-left">
+					<div class="form-group">
+					</div>
+					</form>
+				<ul class="nav navbar-nav navbar-right">
+					
+				</ul>
+			</div>
+			
+		</div>
+		
+	</nav>
+	<div ng-cloak>
+		<div ui-view>
+		</div>
+	</div>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+	<!-- Angular Bootstrap Ui Requires the Bootstrap CSS file, jQuery and Bootstrap.js are not needed-->
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.3.0/ui-bootstrap.min.js"></script>
+	<script src="pages/resources/js/app.module.js"></script>
+	<script src="pages/resources/js/app.config.js"></script>
+	<script src="pages/resources/js/app.run.js"></script>
+	<script src="pages/resources/js/createCustomer/createCustomer.module.js"></script>
+	<script src="pages/resources/js/createCustomer/createCustomer.controller.js"></script>
+	<script src="pages/resources/js/createCustomer/createCustomer.service.js"></script>
+	<script src="pages/resources/js/createCustomer/createCustomer.routes.js"></script>
+	<script src="pages/resources/js/createCustomer/createCustomer.config.js"></script>
+</body>
+</html>
