@@ -13,12 +13,12 @@
 		},
 		
 		managerRoute : {
-			url : '/Welcome',
-			templateUrl: '/RestaurantApp/pages/resources/manager/manager.template.html',
+			url : '/Manager',
+			templateUrl: '/RestaurantApp/pages/resources/manager/manager.template.html'
 		},
 		customerRoute: {
-			url: '/Welcome',
-			templateUrl: '/RestaurantApp/pages/resources/customer/customer.template.html',	
+			url: '/WelcomeCustomer',
+			templateUrl: '/RestaurantApp/pages/resources/customer/customer.template.html'	
 		}
 		
 	})
