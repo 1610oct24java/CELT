@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,9 +20,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="RESTAURANT")
 public class Restaurant implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4524158945507038283L;
 	@Id
 	@Column(name="R_ID")
@@ -34,7 +32,7 @@ public class Restaurant implements Serializable{
 	private List<FoodItem> menu = new ArrayList<FoodItem>();
 	@OneToMany(mappedBy="restaurant", fetch=FetchType.EAGER)
 	private List<Review> reviews = new ArrayList<Review>();
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn(name="CI_ID")
 	private ContactInfo address;
 	
@@ -50,7 +48,6 @@ public class Restaurant implements Serializable{
 		result = prime * result + ((reviews == null) ? 0 : reviews.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {

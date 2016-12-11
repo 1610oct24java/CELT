@@ -1,6 +1,7 @@
 package com.revature.beans;
 
 import java.io.Serializable;
+
 import java.security.SecureRandom;
 
 import javax.persistence.Column;
@@ -13,7 +14,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -21,9 +21,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name="ACCOUNTS")
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class User implements Serializable {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -5141943028394764957L;
 	@Id
 	@SequenceGenerator(name="ACCOUNT_SEQ", sequenceName="ACCOUNT_SEQ")
@@ -39,12 +37,12 @@ public abstract class User implements Serializable {
 	@Column(name="MY_SALT")
 	private String salt;
 	
-	public User(int userId, String username, int password, String salt) {
+	public User(int userId, String username, String password, String salt) {
 		super();
 		this.userId = userId;
 		this.username = username;
-		this.password = password;
 		this.salt = salt;
+		this.password = salt(password);
 	}
 	@Override
 	public String toString() {
