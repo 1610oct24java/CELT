@@ -13,7 +13,7 @@
 		<property name="show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
 		
-		<!-- We have to tell hibernate where our classes it maps are -->
+		<!-- We have to tell Hibernate where our classes it maps are -->
 		<mapping class="com.revature.beans.ContactInfo"/>
 		<mapping class="com.revature.beans.Customer"/>
 		<mapping class="com.revature.beans.FoodItem"/>
