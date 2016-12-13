@@ -12,7 +12,6 @@
 <body ng-app="restaurantApp">
     <div ng-controller="restaurantController">
         <h1>Welcome Manager!</h1>
-        <!-- display the restaurant's name and menu -->
         <h2>{{ restaurant.name }}</h2>
         <h4> Cu<!DOCTYPE html>
 <html>
@@ -67,6 +66,8 @@
     </div>
 </body>
 </html>rrent rating: {{ restaurant.rating }} stars</h4>
+        <h2>{{ restaurant.name }}</h2>
+        <p> Current rating: {{ restaurant.raiting }} stars</p>
         <form ng-submit="addMenuItem()">
             <input type="text" ng-model="newName" size="10" placeholder="Name" required ng-style="inputStyle" style=""/>
             <input type="text" ng-model="newDescription" size="30" placeholder="Description" ng-style="inputStyle" style=""/>
@@ -83,6 +84,7 @@
     	
 		<!-- ng-click event calls remove() to delete checked items -->
     	<button ng-click="remove($food)">Remove Selected Items From Menu</button>
+		<button ng-click="remove($food)">Remove Selected Items From Menu</button>
 		
 		<div class="deletions" ng-hide="hideDeleted">
 			<div class="deletedItems" ng-repeat="deletedFood in deletedMenu">
@@ -101,5 +103,11 @@
 			</div>
 		</div>
     </div>
+    
+    <script src="menuData/scripts/main.js"></script>
+    <script src="menuData/scripts/menu.js"></script>
+    <script src="menuData/scripts/editMenu.js"></script>
+	<script src="menuData/scripts/getMenu.js"></script>
+	<link rel=stylesheet href="menuData/stylesheets/main.css"/>
 </body>
 </html>

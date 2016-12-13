@@ -19,6 +19,14 @@ app.controller('restaurantController',
     				$scope.hideComments = "";
         	});
         });
+        $scope.restaurant = {
+            name: "Chicken Stop",
+            raiting: 3.5
+        };
+    	menuFactory.getMenu().success(function (data) {
+    			console.log(data);
+    			$scope.restaurant.menu = data;
+    	}); 
         $scope.addMenuItem = function () {
     		var newItem = {
                     name: $scope.newName,
@@ -99,6 +107,9 @@ app.controller('restaurantController',
 				menuFactory.deleteMenu(toDelete);
 			if(trueAdd[0])
 				menuFactory.postMenu(trueAdd);
+			
+			$scope.deletedMenu = [];
+			$scope.hideDeleted = true;
 		};
 	}]);
 

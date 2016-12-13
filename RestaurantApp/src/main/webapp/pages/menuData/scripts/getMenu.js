@@ -22,6 +22,10 @@ app.factory('menuFactory', ['$http',
 		menuFactory.getMenu = function () {
 			console.log("Getting Menu");
 			return $http.get(url+"?action=menu");
+			url = 'viewMyMenu';
+				
+		menuFactory.getMenu = function () {
+			return $http.get(url);
 		};
 		
 		menuFactory.postMenu = function (menu) {

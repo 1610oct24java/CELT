@@ -1,6 +1,7 @@
 package com.revature.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,13 +30,22 @@ public class Invoice implements Serializable {
 	@JoinTable(name="I_STATUS",
 			joinColumns=@JoinColumn(name="I_STATUS"),
 			inverseJoinColumns=@JoinColumn(name="IS_ID"))
+	@Column(name="I_STATUS")
 	private String Status;
 	@Column(name="TOTAL")
 	private double total;
 	@ManyToOne
+	@JoinTable(name="CONTACT_INFO")
 	private ContactInfo contact;
 	@ManyToOne
+	@JoinColumn(name="C_ID")
 	private Customer customer;
+    @OneToMany(mappedBy="order")
+    private List<InvoiceItem> items;
+	
+	public void setInvoiceItems(List<InvoiceItem> invoiceItems){
+		this.items = invoiceItems;
+	}
 	
 	public int getId() {
 		return id;

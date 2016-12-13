@@ -36,7 +36,7 @@ public abstract class User implements Serializable {
 	private int password;
 	@Column(name="MY_SALT")
 	private String salt;
-	
+
 	public User(int userId, String username, String password, String salt) {
 		super();
 		this.userId = userId;
@@ -44,6 +44,7 @@ public abstract class User implements Serializable {
 		this.salt = salt;
 		this.password = salt(password);
 	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", salt=" + salt + "]";
@@ -66,7 +67,7 @@ public abstract class User implements Serializable {
 	}
 	public int getId(){
 		return this.userId;
-	};
+	}
 	public void setPassword(String password){
 		this.password = salt(password);
 	}
@@ -103,16 +104,7 @@ public abstract class User implements Serializable {
 	public boolean checkPassword(String pw){
 		return salt(pw) == this.password;
 	}
-	public User() {
-		super();
-	}
-	public User(int userId, String password, String salt) {
-		super();
-		this.userId = userId;
-		this.salt = salt;
-		this.setPassword(password);
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -122,6 +114,7 @@ public abstract class User implements Serializable {
 		result = prime * result + userId;
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -143,6 +136,24 @@ public abstract class User implements Serializable {
 		return true;
 	}
 	
+	public User() {
+		super();
+	}
+	
+	public User(int userId, String password, String salt) {
+		super();
+		this.userId = userId;
+		this.salt = salt;
+		this.setPassword(password);
+	}
+	
+	public User(int userId, String username, int password, String salt) {
+		super();
+		this.userId = userId;
+		this.username = username;
+		this.password = password;
+		this.salt = salt;
+	}
 	
 }
 
