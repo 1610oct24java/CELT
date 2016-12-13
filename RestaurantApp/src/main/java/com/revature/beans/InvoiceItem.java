@@ -24,11 +24,12 @@ public class InvoiceItem implements Serializable {
 	@SequenceGenerator(sequenceName="INVOICE_ITEM_SEQ", name="INVOICE_ITEM_SEQ")
 	@GeneratedValue(generator="INVOICE_ITEM_SEQ", strategy=GenerationType.SEQUENCE)
 	private int id;
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	private FoodItem item;
 	@Column(name="QUANTITY")
 	private int quantity;
-	
+    @ManyToOne
+    private Invoice order;
 	
 	
 	public int getId() {
