@@ -6,6 +6,22 @@ app.factory('menuFactory', ['$http',
 	function ($http) {
 		'use strict';
 		var menuFactory = {},
+			url = 'viewMyMenu',
+			data;
+		
+		menuFactory.getRestaurant = function () {
+			console.log("Getting Restaurant");
+			return $http.get(url+"?action=restaurant");
+		};
+		
+		menuFactory.getStars = function () {
+			console.log("Getting Raiting");
+			return $http.get(url+"?action=stars")
+		}
+		
+		menuFactory.getMenu = function () {
+			console.log("Getting Menu");
+			return $http.get(url+"?action=menu");
 			url = 'viewMyMenu';
 				
 		menuFactory.getMenu = function () {
