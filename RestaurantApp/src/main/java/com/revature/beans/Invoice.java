@@ -47,6 +47,14 @@ public class Invoice implements Serializable {
 		this.items = invoiceItems;
 	}
 	
+	public List<InvoiceItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<InvoiceItem> items) {
+		this.items = items;
+	}
+
 	public int getId() {
 		return id;
 	}

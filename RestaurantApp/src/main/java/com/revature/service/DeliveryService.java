@@ -3,6 +3,7 @@ package com.revature.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.ContactInfo;
 import com.revature.beans.FoodItem;
@@ -15,6 +16,7 @@ import com.revature.dao.InvoiceDaoImpl;
 import com.revature.dao.MenuDao;
 import com.revature.dao.RestaurantMenuDao;
 
+@Component
 public class /* Chelle's */DeliveryService {
 	//As of yet there's no real point to this class but the name is too perfect
 	@Autowired
@@ -50,9 +52,6 @@ public class /* Chelle's */DeliveryService {
 	public void saveInvoice(Invoice invoice){
 		//Session session = new HibernateUtil().getSession();
 		//Transaction tx = session.beginTransaction();
-		setDeliveryDao(new DeliveryDaoImpl());
-		setMenuDao(new MenuDao());
-		setInvoiceDao(new InvoiceDaoImpl());
 		
 		FoodItem f;
 		ContactInfo contactInfo = invoice.getContact();

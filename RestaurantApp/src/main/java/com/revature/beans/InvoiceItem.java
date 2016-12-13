@@ -31,42 +31,37 @@ public class InvoiceItem implements Serializable {
     @ManyToOne
     private Invoice order;
 	
-	
+	public Invoice getOrder() {
+		return order;
+	}
+
+	public void setOrder(Invoice order) {
+		this.order = order;
+	}
+
 	public int getId() {
 		return id;
 	}
-
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-
 	public FoodItem getItem() {
 		return item;
 	}
-
-
 
 	public void setItem(FoodItem item) {
 		this.item = item;
 	}
 
-
-
 	public int getQuantity() {
 		return quantity;
 	}
 
-
-
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-
-
 
 	public InvoiceItem(int id, FoodItem item, int quantity) {
 		super();
@@ -75,19 +70,13 @@ public class InvoiceItem implements Serializable {
 		this.quantity = quantity;
 	}
 
-
-
 	public InvoiceItem() {
 	}
-
-
 
 	@Override
 	public String toString() {
 		return "InvoiceItem [id=" + id + ", item=" + item + ", quantity=" + quantity + "]";
 	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -98,8 +87,6 @@ public class InvoiceItem implements Serializable {
 		result = prime * result + quantity;
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -121,5 +108,4 @@ public class InvoiceItem implements Serializable {
 			return false;
 		return true;
 	}
-
 }
