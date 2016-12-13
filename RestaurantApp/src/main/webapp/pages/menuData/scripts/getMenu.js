@@ -23,7 +23,7 @@ app.factory('menuFactory', ['$http',
 			console.log("Getting Menu");
 			return $http.get(url+"?action=menu");
 			url = 'viewMyMenu';
-		}
+		};
 		
 		menuFactory.postMenu = function (menu) {
 			console.log("menuFactory.postMenu" + menu);
