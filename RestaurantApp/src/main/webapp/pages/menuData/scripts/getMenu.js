@@ -19,13 +19,15 @@ app.factory('menuFactory', ['$http',
 		
 		menuFactory.postMenu = function (menu) {
 			console.log("menuFactory.postMenu" + menu);
-			return $http.post(url, angular.toJson(menu));
+			menu = angular.toJson(menu);
+			return $http.post(url, menu);
 		};
 		
-		menuFactory.postOrder = function (order) {
+		menuFactory.postOrder = function (invoice) {
 			console.log("menuFactory.postOrder");
-			console.log(order);
-			return $http.post(order, angular.toJson(order));
+			invoice = angular.toJson(invoice);
+			console.log(typeof invoice)
+			return $http.post(order, invoice);
 		};
 		
 		menuFactory.deleteMenu = function (menu) {

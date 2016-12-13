@@ -6,9 +6,22 @@ var app = angular.module('orderApp', []);
 
 app.controller('orderController', ['$scope', 'menuFactory', function orderController($scope, menuFactory) {
 	'use strict';
-	$scope.stage = 1;
+	$scope.menu = true;
 	$scope.restaurants = [];
+	$scope.reviews = [];
 	$scope.order = [];
+	$scope.contactInfo = {};
+	$scope.stage = 0;
+	$scope.street = "1234 No Way";
+	$scope.city = "Nowhere";
+	$scope.state = "Canada";
+	$scope.zip = 12345;
+	$scope.phone = "(123) 456-7890";
+	$scope.email = "FLast@Email.net";		
+	
+	$scope.checkStage = function (s) {
+		return $scope.stage === s;
+	}
 	menuFactory.getRestaurants().success(
 		function (data) {
 			$scope.restaurantList = data;
@@ -54,7 +67,6 @@ app.controller('orderController', ['$scope', 'menuFactory', function orderContro
 	};
 	$scope.selectRestaurant = function (restaurant) {
 		$scope.restaurant = restaurant;
-		console.log(restaurant.menu);
 		$scope.stage = 2;
 	};
 	$scope.addToOrder = function (menuItem) {
@@ -84,4 +96,46 @@ app.controller('orderController', ['$scope', 'menuFactory', function orderContro
 		}
 		$scope.order[index].quantity -= 1;
 	};
+	$scope.back = function () {
+		if($scope.stage < 3){
+			$scope.order = [];
+		}
+		$scope.stage -= 1;
+	};
+	$scope.viewReviews = function (restaurant) {
+		$scope.reviews = restaurant.reviews;
+		$scope.showReviews = true;
+	};
+	$scope.enterCI = function () {
+		$scope.stage = 3;
+	};
+	$scope.finalize = function () {
+		$scope.stage = 4;
+	};
+	$scope.submit = function () {
+		var invoice = {
+				"status": 0,
+				"total": $scope.getTotal(),
+				"contact": {
+					"street": $scope.street,
+					"city": $scope.city ,
+					"state": $scope.state,
+					"zip": $scope.zip,
+					"phone": $scope.phone,
+					"email": $scope.email					
+				},
+				items: []
+		};
+		angular.forEach($scope.order, function (food) {
+			var quantity = food.quantity;
+			delete food.quantity;
+			var item = {
+					"item":food,
+					"quantity": quantity,
+			};
+			invoice.items.push(item);
+		});
+		console.log(invoice);
+		menuFactory.postOrder(invoice);
+	}
 }]);

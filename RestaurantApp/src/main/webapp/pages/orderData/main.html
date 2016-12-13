@@ -10,39 +10,73 @@
 <link rel=stylesheet href="pages/orderData/stylesheets/main.css">
 </head>
 <body ng-app=orderApp>
-<div ng-controller=orderController>
+<form ng-controller=orderController ng-submit="submit()">
 	<!-- Loading Screen -->
-	<div class=loading ng-show="{{ stage === 0 }}">
+	<div class=loading ng-show="checkStage(0)">
 		<p>Loading...</p>
 	</div>
 	<!-- View + Select Restaurant -->
-	<div class=restaurantSelect ng-show="{{ stage === 1 }}">
+	<div class=restaurantSelect ng-show="checkStage(1)">
 		<h2>Restaurant List</h2>
 		<div ng-repeat="restaurant in restaurantList">
-			<span ng-click="selectRestaurant(restaurant)">{{ restaurant.name }}</span>:
+			<button type="button" ng-click="selectRestaurant(restaurant)">Select Restaurant</button>
+			<span ng-click="viewReviews(restaurant)">{{ restaurant.name }}</span>:
 			<span> {{ getStars(restaurant.reviews) }}/5 Stars</span>
+		</div>
+		<div ng-show="showReviews">
+			<h3>Reviews</h3>
+			<div ng-show="reviews.length === 0">
+				<p>This restaurant has no reviews!</p>
+			</div>
+			<div ng-hide="reviews.length === 0">
+				<div ng-repeat="review in reviews">
+					<span>{{ review.comment }} - {{ review.stars }}/5 stars</span>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- View + Select items from menu -->
-	<div class=menuSelect ng-show="{{ stage === 1 }}">
+	<div class=menuSelect ng-show="checkStage(2)">
 		<h2> {{ restaurant.name }} </h2>
 		<div ng-repeat="item in restaurant.menu">
-			<button ng-click="addToOrder(item)">Add to Order</button><span> {{ item.price | currency }} {{ item.name }} - {{ item.description }} </span>
+			<button type="button" ng-click="addToOrder(item)">Add to Order</button><span> {{ item.price | currency }} {{ item.name }} - {{ item.description }} </span>
 		</div><br>
 	</div>
 	<!-- View Order -->
-	<div class=orderView ng-show="{{ stage === 1 }}">
+	<div class=orderView ng-show="checkStage(2)">
 		<h3>Current Order</h3>
 		<div ng-repeat="item in order">
-			<button ng-click="removeFromOrder(item)">Remove from Order</button><span> {{ item.quantity }} {{ item.price | currency }} {{ item.name }} - {{ item.description }} </span>
+			<button type="button" ng-click="removeFromOrder(item)">Remove from Order</button><span> {{ item.quantity }} {{ item.price | currency }} {{ item.name }} - {{ item.description }} </span>
 		</div><br>
-		</div>
 		<h4>Your total is: {{ getTotal() | currency }}</h4>
-		
+		<button type="button" ng-click="enterCI()">Continue</button>
+		<button type="button" ng-click="back()">Back</button>
+	</div>
+	<!-- Enter Contact Info -->
+	<div class=contactInfo ng-show="checkStage(3)">
+		<h2>Enter Your Delivery Information</h2>
+		<input type="text" ng-model="contactInfo.street" placeholder="Street"/><br>
+		<input type="text" ng-model="contactInfo.city" placeholder="City"/><br>
+		<input type="text" ng-model="contactInfo.state" placeholder="State"/><br>
+		<input type="number" ng-model="contactInfo.zip" placeholder="Zip Code"/><br>
+		<input type="text" ng-model="contactInfo.phone" placeholder="Phone"/><br>
+		<input type="text" ng-model="contactInfo.email" placeholder="Email"/>
+		<br>
+		<button type="button" ng-click="finalize()">Continue</button>
+		<button type="button" ng-click="back()">Back</button>
 	</div>
 	<!-- Submit -->
-	<div class=submission ng-show="{{ stage === 1 }}">
+	<div class=submission ng-show="checkStage(4)">
+		<h2>Review your order</h2>
+		<div ng-repeat="item in order">
+			<span> {{ item.quantity }} {{ item.name }} - {{ item.description }}</span>
+		</div>
+		<h4>Your total is: {{ getTotal() | currency }}</h4>
+		<p>Delivery Target:<br> {{ contactInfo.street }}<br>{{ contactInfo.city }}, {{ contactInfo.state}}</p>
+		<br>
+		<button type="Submit">Submit</button>
+		<button type="button" ng-click="back()">Back</button>
 	</div>
-</div>
+</form>
 </body>
 </html>
