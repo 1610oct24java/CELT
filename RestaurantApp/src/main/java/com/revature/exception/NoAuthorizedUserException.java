@@ -1,10 +1,11 @@
 package com.revature.exception;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(value=HttpStatus.UNAUTHORIZED)
 public class NoAuthorizedUserException extends Exception {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -9029100073065545099L;
 
 	public NoAuthorizedUserException() {
