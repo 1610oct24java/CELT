@@ -20,7 +20,7 @@ public class DeliveryDaoImpl implements DeliveryDao {
 	public ContactInfo saveContactInfo(ContactInfo ci) {
 		session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
-		System.out.println(ci.toString());
+		System.out.println(ci .toString());
 		int id = (Integer) session.save(ci);
 		if(id<1){
 			tx.rollback();

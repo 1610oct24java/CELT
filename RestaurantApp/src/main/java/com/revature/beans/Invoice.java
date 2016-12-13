@@ -32,8 +32,10 @@ public class Invoice implements Serializable {
 	@Column(name="TOTAL")
 	private double total;
 	@ManyToOne
+	@JoinColumn(name="CI_ID")
 	private ContactInfo contact;
 	@ManyToOne
+	@JoinColumn(name="C_ID")
 	private Customer customer;
 	
 	public int getId() {
