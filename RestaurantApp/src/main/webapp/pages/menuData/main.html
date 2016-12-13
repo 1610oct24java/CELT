@@ -13,22 +13,6 @@
     <div ng-controller="restaurantController">
         <h1>Welcome Manager!</h1>
         <h2>{{ restaurant.name }}</h2>
-        <h4> Cu<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
-<meta charset="ISO-8859-1">
-    <script src="pages/menuData/scripts/main.js"></script>
-	<script src="pages/menuData/scripts/getMenu.js"></script>
-<link rel=stylesheet href="pages/menuData/stylesheets/main.css">
-</head>
-<body ng-app="restaurantApp">
-    <div ng-controller="restaurantController">
-        <h1>Welcome Manager!</h1>
-        <!-- display the restaurant's name and menu -->
-        <h2>{{ restaurant.name }}</h2>
         <h4> Current rating: {{ restaurant.rating }} stars</h4>
         <form ng-submit="addMenuItem()">
             <input type="text" ng-model="newName" size="10" placeholder="Name" required ng-style="inputStyle" style=""/>
@@ -64,50 +48,5 @@
 			</div>
 		</div>
     </div>
-</body>
-</html>rrent rating: {{ restaurant.rating }} stars</h4>
-        <h2>{{ restaurant.name }}</h2>
-        <p> Current rating: {{ restaurant.raiting }} stars</p>
-        <form ng-submit="addMenuItem()">
-            <input type="text" ng-model="newName" size="10" placeholder="Name" required ng-style="inputStyle" style=""/>
-            <input type="text" ng-model="newDescription" size="30" placeholder="Description" ng-style="inputStyle" style=""/>
-            <input type="number" step=.01 ng-model="newPrice" required size="10" ng-style="inputStyle" placeholder="price" style=""/>
-            <input type="submit" value="Add Menu Item" />
-        </form>
-        <h3>Current Menu</h3>
-        <div class="item" ng-repeat="food in restaurant.menu">
-            <input type="checkbox" ng-model="food.deleted"/>
-            <span> {{ food.name }} </span><br>
-            <span> {{ food.price | currency }} -</span>
-            <span> {{ food.description }} </span>
-        </div>
-    	
-		<!-- ng-click event calls remove() to delete checked items -->
-    	<button ng-click="remove($food)">Remove Selected Items From Menu</button>
-		<button ng-click="remove($food)">Remove Selected Items From Menu</button>
-		
-		<div class="deletions" ng-hide="hideDeleted">
-			<div class="deletedItems" ng-repeat="deletedFood in deletedMenu">
-				<input type="checkbox" ng-model="deletedFood.restored"/>
-				<span> {{ deletedFood.name }} </span><br>			
-			</div>
-			<button ng-click="restore($deletedFood)">Restore Selected Items to Menu</button>
-		</div>
-		<div>
-			<button ng-click="commit()">Commit Changes</button>
-		</div>
-		<div class="viewComments" ng-hide="hideComments">
-			<h3>Comments</h3>
-			<div class="comments" ng-repeat="review in restaurant.reviews">
-				<h4> {{ review.comment }}: {{ review.stars }}/5 </h4>
-			</div>
-		</div>
-    </div>
-    
-    <script src="menuData/scripts/main.js"></script>
-    <script src="menuData/scripts/menu.js"></script>
-    <script src="menuData/scripts/editMenu.js"></script>
-	<script src="menuData/scripts/getMenu.js"></script>
-	<link rel=stylesheet href="menuData/stylesheets/main.css"/>
 </body>
 </html>
