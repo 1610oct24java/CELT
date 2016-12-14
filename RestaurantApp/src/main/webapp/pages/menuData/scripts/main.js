@@ -82,16 +82,19 @@ app.controller('restaurantController',
 						trueAdd.push(item);
 					}
 				};
-
-				for(i = 0; i < toDelete.length; i += 1){
-					delete toDelete[i].deleted;
-					delete toDelete[i].restored;
+				console.log(toDelete);
+				if(toDelete){
+					for(i = 0; i < toDelete.length; i += 1){
+						delete toDelete[i].deleted;
+						delete toDelete[i].restored;
+					}
 				}
-				for(i = 0; i < toAdd.length; i += 1){
-					delete toAdd[i].deleted;
-					delete toAdd[i].restored;
+				if(toAdd){
+					for(i = 0; i < toAdd.length; i += 1){
+						delete toAdd[i].deleted;
+						delete toAdd[i].restored;
+					}
 				}
-			
 				console.log(toAdd);
 				console.log(toDelete);
 
@@ -102,9 +105,9 @@ app.controller('restaurantController',
 			}
 			console.log("$scope.commit - " + toDelete + "; " + trueAdd);
 			
-			if(toDelete[0])
+			if(toDelete && toDelete[0])
 				menuFactory.deleteMenu(toDelete);
-			if(trueAdd[0])
+			if(trueAdd && toAdd[0])
 				menuFactory.postMenu(trueAdd);
 			
 			$scope.deletedMenu = [];
