@@ -1,13 +1,18 @@
 package com.revature.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.ContactInfo;
 import com.revature.beans.Manager;
 import com.revature.beans.Restaurant;
 import com.revature.util.HibernateUtil;
 
+@Component
 public class RestaurantDAOImpl implements RestaurantDAO {
 
 	private HibernateUtil hu;
@@ -37,6 +42,17 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	@Override
 	public void deleteRestaurant(Restaurant res) {
 	
+	}
+	@Override
+	public List<Restaurant> getRestaurants() {
+		ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
+		Session session = hu.getSession();
+		Transaction tx = session.beginTransaction();
+		
+		restaurants = (ArrayList<Restaurant>) session.createCriteria(Restaurant.class)
+								.list();
+		
+		return restaurants;
 	}
 
 }

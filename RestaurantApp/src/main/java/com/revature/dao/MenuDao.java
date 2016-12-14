@@ -7,10 +7,12 @@ import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.FoodItem;
 import com.revature.util.HibernateUtil;
 
+@Component
 public class MenuDao implements RestaurantMenuDao {
 	
 	@Override
@@ -27,9 +29,7 @@ public class MenuDao implements RestaurantMenuDao {
 	public FoodItem readMenuItem(int foodItemId) {
 		Session session = HibernateUtil.getSession();
 		
-		FoodItem item = (FoodItem) session.createCriteria(FoodItem.class)
-				.add(Restrictions.ilike("id", foodItemId))
-					.uniqueResult();
+		FoodItem item = (FoodItem) session.get(FoodItem.class, foodItemId);
 		
 		return item;
 	}

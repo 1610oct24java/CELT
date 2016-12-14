@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import javax.servlet.http.HttpSession;
 
-
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,7 +32,7 @@ public class MenuController {
 	@RequestMapping(method=RequestMethod.GET)
 	public Object getMenu(HttpSession s,
 				@RequestParam(value = "action") String action) throws NoAuthorizedUserException{
-		Manager manager = (Manager) s.getAttribute("currentUser");
+		Manager manager = (Manager) s.getAttribute("user");
 		if(manager == null){
 			throw new NoAuthorizedUserException("Manager not defined.");
 		}
@@ -75,5 +74,6 @@ public class MenuController {
 		
 		FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
 		new MenuService().deleteMenu(Arrays.asList(menuArray));
+
 	}
 }

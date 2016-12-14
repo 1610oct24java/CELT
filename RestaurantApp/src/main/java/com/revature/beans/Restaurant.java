@@ -17,6 +17,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Table(name="RESTAURANT")
 public class Restaurant implements Serializable{
@@ -29,8 +32,10 @@ public class Restaurant implements Serializable{
 	@Column(name="R_NAME")
 	private String name;
 	@OneToMany(mappedBy="restaurant", fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<FoodItem> menu = new ArrayList<FoodItem>();
 	@OneToMany(mappedBy="restaurant", fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Review> reviews = new ArrayList<Review>();
 	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn(name="CI_ID")

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +14,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name="REVIEW")
 public class Review implements Serializable {
@@ -30,7 +30,7 @@ public class Review implements Serializable {
 	private float stars;
 	@Column(name="COMMENTS")
 	private String comment;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name="R_ID")
 	private Restaurant restaurant;

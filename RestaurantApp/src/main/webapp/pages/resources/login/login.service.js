@@ -11,10 +11,7 @@
 			$http.post('login', user)
 			.then(response => response.data)
 			.then(destination => {
-				console.log(destination);
 				if(typeof destination.restaurant == 'object') {
-					console.log(destination.restaurant);
-					console.log("WAT");
 					$state.go('managerRoute');
 				}else if(typeof destination.firstName == 'string') {
 					$state.go('customerRoute');
