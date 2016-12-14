@@ -43,11 +43,11 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	public void deleteRestaurant(Restaurant res) {
 	
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Restaurant> getRestaurants() {
 		ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
 		Session session = hu.getSession();
-		Transaction tx = session.beginTransaction();
 		
 		restaurants = (ArrayList<Restaurant>) session.createCriteria(Restaurant.class)
 								.list();

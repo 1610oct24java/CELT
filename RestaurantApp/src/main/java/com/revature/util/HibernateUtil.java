@@ -15,7 +15,6 @@ public class HibernateUtil {
 			try {
 				Class.forName("oracle.jdbc.OracleDriver");
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			Configuration config = new Configuration().configure();

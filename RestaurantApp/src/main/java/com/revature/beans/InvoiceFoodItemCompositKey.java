@@ -16,7 +16,6 @@ public class InvoiceFoodItemCompositKey implements Serializable {
 
 	public InvoiceFoodItemCompositKey() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	private Invoice order;

@@ -2,11 +2,9 @@ package com.revature.dao;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.FoodItem;
@@ -37,7 +35,7 @@ public class MenuDao implements RestaurantMenuDao {
 	@Override
 	public List<FoodItem> getAllItems() {
 		Session session = HibernateUtil.getSession();
-		Criteria ct;
+		@SuppressWarnings("unchecked")
 		List<FoodItem> foodItems = session.createCriteria(FoodItem.class).list();
 		
 		return foodItems;

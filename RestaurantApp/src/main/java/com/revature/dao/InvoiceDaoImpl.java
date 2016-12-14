@@ -23,7 +23,6 @@ public class InvoiceDaoImpl implements InvoiceDao {
 
 	@Override
 	public void saveInvoiceItem(InvoiceItem i) {
-		// TODO Auto-generated method stub
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
 		try{
