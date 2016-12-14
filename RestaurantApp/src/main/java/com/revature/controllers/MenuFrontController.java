@@ -16,11 +16,12 @@ public class MenuFrontController {
 	@RequestMapping
 	public String viewManagerDashboard(ModelMap modelMap, HttpSession session) throws NoAuthorizedUserException{
 		
-		Manager manager = (Manager) session.getAttribute("currentUser");
+		Manager manager = (Manager) session.getAttribute("user");
+		
 		if(manager == null){
 			throw new NoAuthorizedUserException("Manager Not Defined");
 		}
-		
-		return "forward:/menuData/main.html";
+		System.out.println(manager);
+		return "forward:/pages/menuData/main.html";
 	}
 }
