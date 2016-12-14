@@ -12,6 +12,12 @@ public class HibernateUtil {
 
 	public static SessionFactory getSessionFactory() {
 		if (sessionFactory == null) {
+			try {
+				Class.forName("oracle.jdbc.OracleDriver");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			Configuration config = new Configuration().configure();
 
 			ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();

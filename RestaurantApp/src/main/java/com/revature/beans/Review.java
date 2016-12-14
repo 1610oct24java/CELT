@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="REVIEW")
 public class Review implements Serializable {
@@ -30,6 +31,7 @@ public class Review implements Serializable {
 	@Column(name="COMMENTS")
 	private String comment;
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name="R_ID")
 	private Restaurant restaurant;
 	
@@ -78,7 +80,7 @@ public class Review implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Review [id=" + id + ", stars=" + stars + ", comment=" + comment + ", restaurant=" + restaurant + "]";
+		return "Review [id=" + id + ", stars=" + stars + ", comment=" + comment  + "]";
 	}
 
 

@@ -8,13 +8,22 @@ app.factory('menuFactory', ['$http',
 		var menuFactory = {},
 			url = 'viewMyMenu',
 			order = 'orderProcessing';
-
+		
+		menuFactory.getRestaurant = function () {
+			return $http.get(url+"?action=restaurant");
+		};
+		
 		menuFactory.getRestaurants = function () {
 			return $http.get(order);
 		};
 		
+		menuFactory.getStars = function () {
+			console.log("Getting Raiting");
+			return $http.get(url+"?action=stars")
+		}
+		
 		menuFactory.getMenu = function () {
-			return $http.get(url);
+			return $http.get(url+"?action=menu");
 		};
 		
 		menuFactory.postMenu = function (menu) {

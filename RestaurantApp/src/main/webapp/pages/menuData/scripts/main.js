@@ -9,6 +9,16 @@ app.controller('restaurantController',
         'use strict';
     	$scope.newItems = [];
 		$scope.hideDeleted = "true";
+		$scope.hideComments = true;
+        menuFactory.getRestaurant().success(function (data) {
+        	console.log(data);
+        	$scope.restaurant = data;
+        	menuFactory.getStars().success(function (data){
+        		$scope.restaurant.rating = data;
+    			if(data)
+    				$scope.hideComments = "";
+        	});
+        });
         $scope.restaurant = {
             name: "Chicken Stop",
             raiting: 3.5
