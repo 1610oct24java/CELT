@@ -21,7 +21,7 @@ public class MenuFrontController {
 		if(manager == null){
 			throw new NoAuthorizedUserException("Manager Not Defined");
 		}
-		System.out.println(manager);
+
 		return "forward:/pages/menuData/main.html";
 	}
 }
