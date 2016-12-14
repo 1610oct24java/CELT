@@ -1,7 +1,5 @@
 package com.revature.dao;
 
-import java.util.List;
-
 import javax.transaction.Transaction;
 
 import org.hibernate.Query;

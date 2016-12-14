@@ -24,7 +24,6 @@ app.controller('restaurantController',
             raiting: 3.5
         };
     	menuFactory.getMenu().success(function (data) {
-    			console.log(data);
     			$scope.restaurant.menu = data;
     	}); 
         $scope.addMenuItem = function () {

@@ -7,11 +7,14 @@ app.factory('menuFactory', ['$http',
 		'use strict';
 		var menuFactory = {},
 			url = 'viewMyMenu',
-			data;
+			order = 'orderProcessing';
 		
 		menuFactory.getRestaurant = function () {
-			console.log("Getting Restaurant");
 			return $http.get(url+"?action=restaurant");
+		};
+		
+		menuFactory.getRestaurants = function () {
+			return $http.get(order);
 		};
 		
 		menuFactory.getStars = function () {
@@ -20,14 +23,20 @@ app.factory('menuFactory', ['$http',
 		}
 		
 		menuFactory.getMenu = function () {
-			console.log("Getting Menu");
 			return $http.get(url+"?action=menu");
-			url = 'viewMyMenu';
 		};
 		
 		menuFactory.postMenu = function (menu) {
 			console.log("menuFactory.postMenu" + menu);
-			return $http.post(url, angular.toJson(menu));
+			menu = angular.toJson(menu);
+			return $http.post(url, menu);
+		};
+		
+		menuFactory.postOrder = function (invoice) {
+			console.log("menuFactory.postOrder");
+			invoice = angular.toJson(invoice);
+			console.log(typeof invoice)
+			return $http.post(order, invoice);
 		};
 		
 		menuFactory.deleteMenu = function (menu) {

@@ -25,7 +25,8 @@
             <span> {{ food.description }} </span>
         </div>
     	
-		<button ng-click="remove($food)">Remove Selected Items From Menu</button>
+		<!-- ng-click event calls remove() to delete checked items -->
+    	<button ng-click="remove($food)">Remove Selected Items From Menu</button>
 		
 		<div class="deletions" ng-hide="hideDeleted">
 			<div class="deletedItems" ng-repeat="deletedFood in deletedMenu">
@@ -36,6 +37,12 @@
 		</div>
 		<div>
 			<button ng-click="commit()">Commit Changes</button>
+		</div>
+		<div class="viewComments" ng-hide="hideComments">
+			<h3>Comments</h3>
+			<div class="comments" ng-repeat="review in restaurant.reviews">
+				<h4> {{ review.comment }}: {{ review.stars }}/5 </h4>
+			</div>
 		</div>
     </div>
     
