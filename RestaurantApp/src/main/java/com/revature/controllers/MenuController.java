@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import com.revature.beans.FoodItem;
 import com.revature.beans.Manager;
 import com.revature.beans.Restaurant;
@@ -49,7 +48,7 @@ public class MenuController {
 			return restaurant;
 		case "stars":
 			log.debug("stars = " + restaurant.getReviews());
-			return new ReviewService().getRaiting(restaurant.getReviews());
+			return new ReviewService().getRating(restaurant.getReviews());
 		case "menu":
 			log.debug("menu = " + restaurant.getMenu());
 			return restaurant.getMenu();
@@ -60,40 +59,21 @@ public class MenuController {
 	
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.POST)
-	public String addItemsToMenu(@RequestBody String JsonMenu){
+	public void addItemsToMenu(@RequestBody String JsonMenu) throws IOException {
 		ObjectMapper om = new ObjectMapper();
 		System.out.println(JsonMenu);
-		
-		try {			
-			FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
-			
-			new MenuService().addMenuItems(Arrays.asList(menuArray));
-		} catch (JsonParseException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return "failure";
-		}
-		
-		return "success";
+
+		FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
+
+		new MenuService().addMenuItems(Arrays.asList(menuArray));
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE)
-	public void deleteMenu(@RequestBody String JsonMenu){
+	public void deleteMenu(@RequestBody String JsonMenu) throws IOException {
 		ObjectMapper om = new ObjectMapper();
 		
-		FoodItem[] menuArray;
-		try {
-			menuArray = om.readValue(JsonMenu, FoodItem[].class);
-			new MenuService().deleteMenu(Arrays.asList(menuArray));
-		} catch (JsonParseException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
+		new MenuService().deleteMenu(Arrays.asList(menuArray));
+
 	}
 }
