@@ -30,7 +30,7 @@ public class OrderProcessor {
 	@RequestMapping(method=RequestMethod.POST)
 	public String submitOrder(@RequestBody String order, HttpSession session) throws JsonParseException, JsonMappingException, IOException{
 		ObjectMapper om = new ObjectMapper();
-		Customer customer = (Customer) session.getAttribute("currentUser");
+		Customer customer = (Customer) session.getAttribute("user");
 		
 		System.out.println(order);
 

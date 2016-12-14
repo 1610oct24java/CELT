@@ -113,6 +113,7 @@ app.controller('orderController', ['$scope', 'menuFactory', function orderContro
 		$scope.stage = 4;
 	};
 	$scope.submit = function () {
+		$scope.stage = 5;
 		var invoice = {
 				"status": 0,
 				"total": $scope.getTotal(),

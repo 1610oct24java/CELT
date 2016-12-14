@@ -2,11 +2,13 @@ package com.revature.dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Invoice;
 import com.revature.beans.InvoiceItem;
 import com.revature.util.HibernateUtil;
 
+@Component
 public class InvoiceDaoImpl implements InvoiceDao {
 	
 	@Override
@@ -24,10 +26,12 @@ public class InvoiceDaoImpl implements InvoiceDao {
 		// TODO Auto-generated method stub
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
-		
-		session.save(i);
-		tx.commit();
-		session.close();
+		try{
+			session.save(i);
+			tx.commit();
+		} finally {
+			session.close();
+		}
 	}
 
 }

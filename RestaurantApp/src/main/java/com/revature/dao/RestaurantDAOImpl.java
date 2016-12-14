@@ -5,12 +5,14 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.ContactInfo;
 import com.revature.beans.Manager;
 import com.revature.beans.Restaurant;
 import com.revature.util.HibernateUtil;
 
+@Component
 public class RestaurantDAOImpl implements RestaurantDAO {
 
 	private HibernateUtil hu;

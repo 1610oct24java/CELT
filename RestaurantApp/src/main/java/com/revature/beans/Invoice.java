@@ -3,8 +3,10 @@ package com.revature.beans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,11 +29,8 @@ public class Invoice implements Serializable {
 	@GeneratedValue(generator="INVOICE_SEQ", strategy=GenerationType.SEQUENCE)
 	@Column(name="I_ID")
 	private int id;
-	@JoinTable(name="I_STATUS",
-			joinColumns=@JoinColumn(name="I_STATUS"),
-			inverseJoinColumns=@JoinColumn(name="IS_ID"))
 	@Column(name="I_STATUS")
-	private String Status;
+	private int status;
 	@Column(name="TOTAL")
 	private double total;
 	@ManyToOne
@@ -40,7 +39,7 @@ public class Invoice implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="C_ID")
 	private Customer customer;
-    @OneToMany(mappedBy="order")
+    @OneToMany(mappedBy="order",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private List<InvoiceItem> items;
 	
 	public void setInvoiceItems(List<InvoiceItem> invoiceItems){
@@ -63,13 +62,15 @@ public class Invoice implements Serializable {
 		this.id = id;
 	}
 
-	public String getStatus() {
-		return Status;
+	public int getStatus() {
+		return status;
+	}
+	
+	
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
-	public void setStatus(String status) {
-		Status = status;
-	}
 
 	public double getTotal() {
 		return total;
@@ -98,29 +99,31 @@ public class Invoice implements Serializable {
 	public Invoice() {
 	}
 
-	public Invoice(int id, String status, double total, ContactInfo contact, Customer customer) {
+	public Invoice(int id, int status, double total, ContactInfo contact, Customer customer, List<InvoiceItem> items) {
 		super();
 		this.id = id;
-		Status = status;
+		this.status = status;
 		this.total = total;
 		this.contact = contact;
 		this.customer = customer;
+		this.items = items;
 	}
 
 	@Override
 	public String toString() {
-		return "Invoice [id=" + id + ", Status=" + Status + ", total=" + total + ", contact=" + contact + ", customer="
-				+ customer + "]";
+		return "Invoice [id=" + id + ", status=" + status + ", total=" + total + ", contact=" + contact + ", customer="
+				+ customer + ", items=" + items + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Status == null) ? 0 : Status.hashCode());
 		result = prime * result + ((contact == null) ? 0 : contact.hashCode());
 		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((items == null) ? 0 : items.hashCode());
+		result = prime * result + status;
 		long temp;
 		temp = Double.doubleToLongBits(total);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -136,11 +139,6 @@ public class Invoice implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Invoice other = (Invoice) obj;
-		if (Status == null) {
-			if (other.Status != null)
-				return false;
-		} else if (!Status.equals(other.Status))
-			return false;
 		if (contact == null) {
 			if (other.contact != null)
 				return false;
@@ -153,8 +151,17 @@ public class Invoice implements Serializable {
 			return false;
 		if (id != other.id)
 			return false;
+		if (items == null) {
+			if (other.items != null)
+				return false;
+		} else if (!items.equals(other.items))
+			return false;
+		if (status != other.status)
+			return false;
 		if (Double.doubleToLongBits(total) != Double.doubleToLongBits(other.total))
 			return false;
 		return true;
 	}
+	
+	
 }

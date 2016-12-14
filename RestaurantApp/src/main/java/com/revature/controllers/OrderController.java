@@ -13,14 +13,14 @@ public class OrderController {
 	
 	@RequestMapping
 	public String forwardToOrderingPage(HttpSession s){
-		Customer customer = (Customer) s.getAttribute("currentUser");
+		Customer customer = (Customer) s.getAttribute("user");
 		
 		if(customer==null){
 			//No one is logged in so customer is set to guest
 			customer = new Customer();
 			customer.setUsername("guest");
 			customer.setUserId(0);
-			s.setAttribute("currentUser", customer);
+			s.setAttribute("user", customer);
 		}
 		return "forward:pages/orderData/main.html";
 	}
