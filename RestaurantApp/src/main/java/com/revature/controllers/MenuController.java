@@ -32,7 +32,7 @@ public class MenuController {
 	@RequestMapping(method=RequestMethod.GET)
 	public Object getMenu(HttpSession s,
 				@RequestParam(value = "action") String action) throws NoAuthorizedUserException{
-		Manager manager = (Manager) s.getAttribute("currentUser");
+		Manager manager = (Manager) s.getAttribute("user");
 		if(manager == null){
 			throw new NoAuthorizedUserException("Manager not defined.");
 		}
