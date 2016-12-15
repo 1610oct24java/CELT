@@ -18,10 +18,10 @@ app.controller('restaurantController',
     			if(data)
     				$scope.hideComments = "";
         	});
+        	menuFactory.getMenu().success(function (data) {
+        			$scope.restaurant.menu = data;
+        	}); 
         });
-    	menuFactory.getMenu().success(function (data) {
-    			$scope.restaurant.menu = data;
-    	}); 
         $scope.addMenuItem = function () {
     		var newItem = {
                     name: $scope.newName,
@@ -76,9 +76,9 @@ app.controller('restaurantController',
 				addCheck = function (item) {
 					if (item !== toAdd[i]) {
 						trueAdd.push(item);
+						console.log(trueAdd);
 					}
 				};
-				console.log(toDelete);
 				if(toDelete){
 					for(i = 0; i < toDelete.length; i += 1){
 						delete toDelete[i].deleted;
@@ -89,18 +89,23 @@ app.controller('restaurantController',
 					for(i = 0; i < toAdd.length; i += 1){
 						delete toAdd[i].deleted;
 						delete toAdd[i].restored;
+						delete toAdd[i].soldOut;
 					}
 				}
-				console.log(toAdd);
+				console.log(trueAdd);
 				console.log(toDelete);
 
 			for (i = 0; i < toAdd.length; i += 1) {
 				delete toAdd[i].deleted;
-				console.log(toAdd[i]);
-				angular.forEach(toDelete, addCheck);
+				if(toDelete && toDelete[0]){
+					angular.forEach(toDelete, addCheck);
+				} else {
+					trueAdd = toAdd;
+				}
+				console.log(trueAdd);
 			}
 			console.log("$scope.commit - " + toDelete + "; " + trueAdd);
-			
+						
 			if(toDelete && toDelete[0])
 				menuFactory.deleteMenu(toDelete);
 			if(trueAdd && toAdd[0])
