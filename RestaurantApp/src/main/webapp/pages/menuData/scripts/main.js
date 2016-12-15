@@ -19,10 +19,6 @@ app.controller('restaurantController',
     				$scope.hideComments = "";
         	});
         });
-        $scope.restaurant = {
-            name: "Chicken Stop",
-            raiting: 3.5
-        };
     	menuFactory.getMenu().success(function (data) {
     			$scope.restaurant.menu = data;
     	}); 

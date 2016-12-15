@@ -57,11 +57,15 @@ public class MenuController {
 	
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.POST)
-	public void addItemsToMenu(@RequestBody String JsonMenu) throws IOException {
+	public void addItemsToMenu(@RequestBody String JsonMenu, HttpSession session) throws IOException {
 		ObjectMapper om = new ObjectMapper();
-		System.out.println(JsonMenu);
-
+		
+		Manager manager = (Manager) session.getAttribute("currentUser");
 		FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
+		
+		for(FoodItem i : menuArray){
+			i.setRestaurant(manager.getRestaurant());
+		}
 
 		new MenuService().addMenuItems(Arrays.asList(menuArray));
 	}

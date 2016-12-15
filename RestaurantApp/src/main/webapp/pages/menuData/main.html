@@ -10,7 +10,9 @@
     <div ng-controller="restaurantController">
         <h1>Welcome Manager!</h1>
         <h2>{{ restaurant.name }}</h2>
-        <p> Current rating: {{ restaurant.raiting }} stars</p>
+
+        <h4> Current rating: {{ restaurant.rating }} stars</h4>
+
         <form ng-submit="addMenuItem()">
             <input type="text" ng-model="newName" size="10" placeholder="Name" required ng-style="inputStyle" style=""/>
             <input type="text" ng-model="newDescription" size="30" placeholder="Description" ng-style="inputStyle" style=""/>
