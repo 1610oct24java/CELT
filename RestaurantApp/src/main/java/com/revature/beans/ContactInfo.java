@@ -12,9 +12,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="CONTACT_INFO")
 public class ContactInfo implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7929748897411870510L;
 	@Id
 	@Column(name="CI_ID")
