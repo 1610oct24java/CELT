@@ -22,7 +22,7 @@
     	} else if (this.customer.lastName == "")
     	{
     		alert("Last Name is Required");
-    		
+    		return;
     	} else if (this.customer.username == "")
     	{
     		alert("Username is Required");

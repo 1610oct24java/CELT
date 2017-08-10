@@ -1,12 +1,16 @@
 package com.revature.controllers;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.revature.beans.FoodItem;
 import com.revature.beans.Manager;
+import com.revature.beans.Restaurant;
 import com.revature.exception.NoAuthorizedUserException;
 
 @Controller
@@ -14,13 +18,11 @@ import com.revature.exception.NoAuthorizedUserException;
 public class MenuFrontController {
 	
 	@RequestMapping
-	public String viewManagerDashboard(ModelMap modelMap, HttpSession session) throws NoAuthorizedUserException{
-		
-		Manager manager = (Manager) session.getAttribute("currentUser");
+	public String viewManagerDashboard(ModelMap modelMap, HttpSession session) throws NoAuthorizedUserException{		
+		Manager manager = (Manager) session.getAttribute("user");
 		if(manager == null){
 			throw new NoAuthorizedUserException("Manager Not Defined");
-		}
-		
-		return "forward:/menuData/main.html";
+			}
+		return "forward:/pages/menuData/main.html";
 	}
 }

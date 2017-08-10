@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="ISO-8859-1">
+<title>/title>
+</head>
+<body ng-cloak>
+
+	<div ng-controller="OrderCtrl">
+		<ul>
+			<li ng-repeat="item in OrderCtrl.order">
+				<p>{{item.name}} {{item.qty}}  {{item.total}}</p>
+			</li>
+		</ul>
+		
+		<p>Total Cost of All Items:  {{total}}</p>
+	</div>
+</body>
+</html>

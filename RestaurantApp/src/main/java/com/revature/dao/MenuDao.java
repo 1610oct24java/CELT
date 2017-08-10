@@ -2,15 +2,15 @@ package com.revature.dao;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.FoodItem;
 import com.revature.util.HibernateUtil;
 
+@Component
 public class MenuDao implements RestaurantMenuDao {
 	
 	@Override
@@ -27,9 +27,7 @@ public class MenuDao implements RestaurantMenuDao {
 	public FoodItem readMenuItem(int foodItemId) {
 		Session session = HibernateUtil.getSession();
 		
-		FoodItem item = (FoodItem) session.createCriteria(FoodItem.class)
-				.add(Restrictions.ilike("id", foodItemId))
-					.uniqueResult();
+		FoodItem item = (FoodItem) session.get(FoodItem.class, foodItemId);
 		
 		return item;
 	}
@@ -37,7 +35,7 @@ public class MenuDao implements RestaurantMenuDao {
 	@Override
 	public List<FoodItem> getAllItems() {
 		Session session = HibernateUtil.getSession();
-		Criteria ct;
+		@SuppressWarnings("unchecked")
 		List<FoodItem> foodItems = session.createCriteria(FoodItem.class).list();
 		
 		return foodItems;

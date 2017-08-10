@@ -1,17 +1,15 @@
 package com.revature.dao;
 
-import java.util.List;
-
-import javax.transaction.Transaction;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Customer;
 import com.revature.beans.Manager;
 import com.revature.beans.User;
 import com.revature.util.HibernateUtil;
 
+@Component
 public class UserDAOImp implements UserDAO {
 
 	@Override
@@ -65,7 +63,6 @@ public class UserDAOImp implements UserDAO {
 		Session session = HibernateUtil.getSession();
 		Query query;
 		String hql;
-		Transaction tx;
 		Object returnCustomer = null;
 
 		hql = "FROM Customer AS C WHERE C.userId = :accountID";

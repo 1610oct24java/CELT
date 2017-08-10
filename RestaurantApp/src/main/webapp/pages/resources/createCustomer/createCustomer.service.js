@@ -8,8 +8,8 @@
 	    CreateCustomerService.$inject = [ '$http', '$state'];
 
 	    function CreateCustomerService($http, $state) {	  
-	    	 this.create = (customer) => {
-	    	       $http //note because of the => syntax the return is implied
+	    	 this.create = (customer) => { //note because of the => syntax the return is implied
+	    	       $http
 	    	        .post('cCustomer', customer)
 	    	          .then(response => response.data)
 	    	          .then(customer => {

@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import javax.servlet.http.HttpSession;
 
-
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.FoodItem;
 import com.revature.beans.Manager;
@@ -33,7 +30,7 @@ public class MenuController {
 	@RequestMapping(method=RequestMethod.GET)
 	public Object getMenu(HttpSession s,
 				@RequestParam(value = "action") String action) throws NoAuthorizedUserException{
-		Manager manager = (Manager) s.getAttribute("currentUser");
+		Manager manager = (Manager) s.getAttribute("user");
 		if(manager == null){
 			throw new NoAuthorizedUserException("Manager not defined.");
 		}
@@ -60,11 +57,15 @@ public class MenuController {
 	
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.POST)
-	public void addItemsToMenu(@RequestBody String JsonMenu) throws IOException {
+	public void addItemsToMenu(@RequestBody String JsonMenu, HttpSession session) throws IOException {
 		ObjectMapper om = new ObjectMapper();
-		System.out.println(JsonMenu);
-
+		
+		Manager manager = (Manager) session.getAttribute("currentUser");
 		FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
+		
+		for(FoodItem i : menuArray){
+			i.setRestaurant(manager.getRestaurant());
+		}
 
 		new MenuService().addMenuItems(Arrays.asList(menuArray));
 	}
@@ -75,5 +76,6 @@ public class MenuController {
 		
 		FoodItem[] menuArray = om.readValue(JsonMenu, FoodItem[].class);
 		new MenuService().deleteMenu(Arrays.asList(menuArray));
+
 	}
 }
